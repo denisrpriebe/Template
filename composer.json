@@ -1,0 +1,22 @@
+{
+    "name": "denisrpriebe/template",
+    "description": "A framework template to start a project faster.",
+    "type": "library",
+    "homepage": "https://github.com/denisrpriebe/Template",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Denis Priebe",
+            "email": "denisrpriebe@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "smarty/smarty": "~3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        }
+    }
+}

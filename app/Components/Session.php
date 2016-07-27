@@ -6,22 +6,17 @@ use App\Contracts\ComponentContract;
 
 class Session implements ComponentContract {
 
-    protected $key;
+    /**
+     * Creates an instance of the session.
+     * 
+     * @param array $settings
+     */
+    public function __construct($settings = array()) {
 
-    public function __construct($sessionName) {
-
-        session_name($sessionName);
+        session_name($settings['name']);
         session_start();
 
         $this->checkFlash();
-    }
-
-    public function getKey() {
-        return $this->key;
-    }
-
-    public function setKey($key) {
-        $this->key = $key;
     }
 
     /**

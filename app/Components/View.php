@@ -9,8 +9,6 @@ use App\Contracts\ComponentContract;
  */
 class View extends \Smarty implements ComponentContract {
 
-    protected $key;
-
     /**
      * The views directory.
      *
@@ -31,21 +29,15 @@ class View extends \Smarty implements ComponentContract {
      * @param type $views
      * @param type $assets
      */
-    public function __construct($views, $assets) {
+    public function __construct($settings = array()) {
 
         parent::__construct();
 
-        $this->views = $views;
-        $this->assets = $assets;
-    }
+        $this->setCompileDir('./compiled_views');
 
-    public function getKey() {
-        return $this->key;
-    }
-
-    public function setKey($key) {
-        $this->key = $key;
-    }
+        $this->views = $settings['views'];
+        $this->assets = $settings['assets'];
+    }    
 
     /**
      * Adds a variable to the view.

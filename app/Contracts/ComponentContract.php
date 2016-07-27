@@ -4,7 +4,5 @@ namespace App\Contracts;
 
 interface ComponentContract {
 
-    public function getKey();
-
-    public function setKey($key);
+    public function __construct($settings = array());
 }

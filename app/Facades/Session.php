@@ -14,7 +14,7 @@ class Session {
      * @param mixed $object
      */
     public static function store($name, $object) {
-        $GLOBALS['session']->store($name, $object);
+        $GLOBALS['_session']->store($name, $object);
     }
 
     /**
@@ -23,7 +23,7 @@ class Session {
      * @param string $name
      */
     public static function remove($name) {
-        $GLOBALS['session']->remove($name);
+        $GLOBALS['_session']->remove($name);
     }
 
     /**
@@ -33,7 +33,7 @@ class Session {
      * @return mixed
      */
     public static function get($name) {
-        return $GLOBALS['session']->get($name);
+        return $GLOBALS['_session']->get($name);
     }
 
     /**
@@ -41,7 +41,7 @@ class Session {
      * 
      */
     public static function destroy() {
-        $GLOBALS['session']->destroy();
+        $GLOBALS['_session']->destroy();
     }
 
     /**
@@ -51,7 +51,7 @@ class Session {
      * @param type $object
      */
     public static function flash($name, $object) {
-        $GLOBALS['session']->flash($name, $object);
+        $GLOBALS['_session']->flash($name, $object);
     }
 
 }

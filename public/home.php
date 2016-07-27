@@ -2,13 +2,27 @@
 
 require_once '../app/start.php';
 
-use App\Facades\View;
-use App\Facades\Database;
-use App\Models\User;
-use App\ModelBuilders\UserBuilder;
+use App\Facades\Models\User;
+use App\Facades\Encryption;
+use App\Facades\Input;
+use Carbon\Carbon;
 
-$result = Database::query('SELECT * FROM users WHERE id = 1');
-$user = User::build(new UserBuilder, $result[0]);
+//User::save(array(
+//    'id' => '3',
+//    'email' => 'gretchen.poster@mnsu.edu',
+//    'first_name' => 'Gretchen',
+//    'last_name' => 'Poster',
+//    'password' => Encryption::hash('45269'),
+//    'created_on' => Carbon::now()->toDateTimeString(),
+//    'updated_on' => Carbon::now()->toDateTimeString()
+//));
 
-View::add('user', $user);
-View::show('pages/home');
+User::where(array(
+    array('id', '>', '1'),
+    array('')
+));
+
+echo '<pre>';
+var_dump(User::where());
+echo '</pre>';
+

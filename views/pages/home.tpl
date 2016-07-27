@@ -5,6 +5,6 @@
 {block name="page-content"}
     Home Content
     <br/>
-    <pre>{var_dump($user)}</pre>
+    <pre></pre>
 {/block}
 

@@ -14,7 +14,7 @@ class View {
      * @param mixed $value
      */
     public static function add($name, $value) {
-        $GLOBALS['view']->add($name, $value);
+        $GLOBALS['_view']->add($name, $value);
     }
 
     /**
@@ -24,7 +24,7 @@ class View {
      * @return type
      */
     public static function asset($asset) {
-        return $GLOBALS['view']->asset($asset);
+        return $GLOBALS['_view']->asset($asset);
     }
 
     /**
@@ -34,7 +34,7 @@ class View {
      * @return string
      */
     public static function show($template) {
-        return $GLOBALS['view']->show($template);
+        return $GLOBALS['_view']->show($template);
     }
 
     /**
@@ -44,7 +44,7 @@ class View {
      * @return type
      */
     public static function make($template) {
-        return $GLOBALS['view']->make($template);
+        return $GLOBALS['_view']->make($template);
     }
 
 }

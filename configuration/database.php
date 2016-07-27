@@ -1,8 +1,33 @@
 <?php
 
+/**
+ * Database Configuration
+ * 
+ * Database credentials and connection settings are configured here.
+ */
 return array(
+    
+    /**
+     * The server to connect to.
+     * 
+     */
     'host' => 'localhost',
+    
+    /**
+     * The username to used to connect to the database.
+     * 
+     */
     'username' => 'dba',
+    
+    /**
+     * The password used to connect to the database.
+     * 
+     */
     'password' => 'password',
-    'dbname' => 'orderblank'
+    
+    /**
+     * The database name to connect to.
+     * 
+     */
+    'dbname' => 'template'
 );

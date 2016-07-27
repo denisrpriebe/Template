@@ -1,12 +1,18 @@
 {
-    "name": "Alliance2Xml",
-    "homepage": "https://github.com/SurgicalSteel0/Orderblank",
+    "name": "ApplicationName",
+    "description": "Application description here.",
+    "keywords": [
+        "App",
+        "Keywords",
+        "Here"
+    ],
+    "homepage": "https://github.com/denisrpriebe/Template",
+    "license": "MIT",
     "authors": [
         "Denis Priebe <denisrpriebe@gmail.com>"
     ],
     "description": "",
     "main": "",
-    "license": "MIT",
     "ignore": [
         "**/.*",
         "node_modules",
@@ -15,12 +21,10 @@
         "tests"
     ],
     "dependencies": {
-        "jquery": "2.1.4",
-        "bootstrap": "3.3.6",
-        "datatables.net-bs": "1.10.11",
-        "datatables.net-buttons-bs": "1.1.2"
+        "jquery": "3.1.0",
+        "bootstrap": "3.3.7"
     },
     "resolutions": {
-        "jquery": "2.1.4"
+        "jquery": "3.1.0"
     }
 }

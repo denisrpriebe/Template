@@ -14,7 +14,7 @@ class Input {
      * @return mixed
      */
     public static function get($name) {
-        return filter_input(INPUT_GET, $name);
+        return $GLOBALS['_input']->get($name);
     }
 
     /**
@@ -24,7 +24,17 @@ class Input {
      * @return mixed
      */
     public static function post($name) {
-        return filter_input(INPUT_POST, $name);
+        return $GLOBALS['_input']->post($name);
+    }
+
+    /**
+     * Determines if the given value is being passed.
+     * 
+     * @param type $value
+     * @return types
+     */
+    public static function has($name) {
+        return $GLOBALS['_input']->has($name);
     }
 
     /**
@@ -33,7 +43,7 @@ class Input {
      * @return string
      */
     public static function method() {
-        return $_SERVER['REQUEST_METHOD'];
+        return $GLOBALS['_input']->method();
     }
 
 }

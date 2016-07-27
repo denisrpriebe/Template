@@ -8,8 +8,8 @@
         {include file="./include/styles.tpl"}
         {include file="./include/scripts.tpl"}
 
-        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="{View::asset('images/favicon.ico')}" type="image/x-icon">
+        <link rel="icon" href="{View::asset('images/favicon.ico')}" type="image/x-icon">
 
         <title>{block name="page-title"}{/block}</title>
 

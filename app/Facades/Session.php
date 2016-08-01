@@ -37,6 +37,16 @@ class Session {
     }
 
     /**
+     * Determines if the session has the given value.
+     * 
+     * @param string $name
+     * @return boolean
+     */
+    public static function has($name) {
+        return $GLOBALS['_session']->has($name);
+    }
+    
+    /**
      * Destory the current session and all of its data.
      * 
      */

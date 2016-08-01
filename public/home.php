@@ -3,9 +3,6 @@
 require_once '../app/start.php';
 
 use App\Facades\Models\User;
-use App\Facades\Encryption;
-use App\Facades\Input;
-use Carbon\Carbon;
 
 //User::save(array(
 //    'id' => '3',
@@ -16,13 +13,18 @@ use Carbon\Carbon;
 //    'created_on' => Carbon::now()->toDateTimeString(),
 //    'updated_on' => Carbon::now()->toDateTimeString()
 //));
+//Mail::send(array(
+//    'to' => 'denis.priebe@mnsu.edu',
+//    'subject' => 'Test Email',
+//    'body' => View::make('emails/account-created')
+//));
 
-User::where(array(
-    array('id', '>', '1'),
-    array('')
+$result = User::where(array(
+    array('email', 'LIKE', '%@gmail.com'),
+    array('id', '>', '0')
 ));
 
 echo '<pre>';
-var_dump(User::where());
+var_dump($result);
 echo '</pre>';
 

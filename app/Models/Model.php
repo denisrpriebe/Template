@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Facades\Database as DB;
+use App\Facades\DB;
 
 abstract class Model {
 
@@ -36,7 +36,7 @@ abstract class Model {
      * 
      * @param array $modelData
      */
-    public function save($modelData = array()) {
+    public function save(array $modelData) {
 
         $columnNames = array();
         $columnValues = array();
@@ -50,7 +50,7 @@ abstract class Model {
 
         return DB::insert($sql);
     }
-    
+
     /**
      * Returns all models from the database.
      * 
@@ -58,6 +58,26 @@ abstract class Model {
      */
     public function all() {
         $sql = 'SELECT * FROM ' . $this->tableName;
+        return DB::query($sql);
+    }
+
+    /**
+     * 
+     * @param array $conditions
+     * @return object|array
+     */
+    public function where(array $conditions) {
+
+        $conditionsArray = array();
+
+        foreach ($conditions as $condition) {
+            $condition[2] = "'" . DB::clean($condition[2]) . "'";
+            array_push($conditionsArray, implode(' ', $condition));
+        }
+
+        $where = implode(' AND ', $conditionsArray);
+
+        $sql = 'SELECT * FROM ' . $this->tableName . ' WHERE ' . $where;
         return DB::query($sql);
     }
 

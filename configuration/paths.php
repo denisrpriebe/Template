@@ -18,5 +18,11 @@ return array(
      * visible for the client. This is normally js, css, images and other files.
      * 
      */
-    'assets' => 'http://127.0.0.1/projects/Template/public/assets'
+    'assets' => 'http://127.0.0.1/projects/Template/public/assets',
+    
+    /**
+     * The path to the public directory. This is used for redirecting.
+     * 
+     */
+    'public' => 'http://127.0.0.1/projects/Template/public'
 );

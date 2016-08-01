@@ -8,7 +8,7 @@ class Configuration implements ComponentContract {
 
     protected $configurations;
 
-    public function __construct($configurations = array()) {
+    public function __construct(array $configurations) {
         $this->configurations = $configurations;
     }
 
@@ -26,6 +26,14 @@ class Configuration implements ComponentContract {
 
     public function encryption($name) {
         return $this->configurations['encryption'][$name];
+    }
+
+    public function mail($name) {
+        return $this->configurations['mail'][$name];
+    }
+
+    public function authentication($name) {
+        return $this->configurations['authentication'][$name];
     }
 
 }

@@ -4,16 +4,26 @@ namespace App\Facades;
 
 class Model {
 
+    /**
+     * Get a model from the database by the given id.
+     * 
+     * @param string|int $id
+     * @return object
+     */
     public static function find($id) {
         return $GLOBALS[static::getRegisteredModelName()]->find($id);
     }
 
-    public static function save($modelData) {
+    public static function save(array $modelData) {
         return $GLOBALS[static::getRegisteredModelName()]->save($modelData);
     }
 
     public static function all() {
         return $GLOBALS[static::getRegisteredModelName()]->all();
+    }
+
+    public static function where(array $conditions) {
+        return $GLOBALS[static::getRegisteredModelName()]->where($conditions);
     }
 
     private static function getRegisteredModelName() {

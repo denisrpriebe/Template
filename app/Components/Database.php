@@ -11,7 +11,7 @@ class Database extends \mysqli implements ComponentContract {
      *
      * @param array $settings
      */
-    public function __construct($settings = array()) {
+    public function __construct(array $settings) {
         $this->connect($settings['host'], $settings['username'], $settings['password'], $settings['dbname']);
     }
 

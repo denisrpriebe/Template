@@ -29,7 +29,7 @@ class View extends \Smarty implements ComponentContract {
      * @param type $views
      * @param type $assets
      */
-    public function __construct($settings = array()) {
+    public function __construct(array $settings) {
 
         parent::__construct();
 

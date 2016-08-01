@@ -2,7 +2,7 @@
 
 namespace App\Facades;
 
-class Database {
+class DB {
 
     public static function query($sql) {
         return $GLOBALS['_database']->query($sql);

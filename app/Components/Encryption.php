@@ -25,7 +25,7 @@ class Encryption implements ComponentContract {
      * 
      * @param type $settings
      */
-    public function __construct($settings = array()) {
+    public function __construct(array $settings) {
         $this->salt = $settings['salt'];
         $this->pepper = $settings['pepper'];
     }
@@ -40,4 +40,12 @@ class Encryption implements ComponentContract {
         return sha1(md5($value . $this->salt) . $this->pepper);
     }
 
+    public function encrypt($value) {
+        
+    }
+    
+    public function decrypt($value) {
+        
+    }
+    
 }

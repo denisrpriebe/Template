@@ -2,7 +2,7 @@
 
 namespace App\Facades;
 
-class Configuration {
+class Config {
 
     public static function paths($name) {
         return $GLOBALS['_configuration']->paths($name);
@@ -18,6 +18,14 @@ class Configuration {
 
     public static function encryption($name) {
         return $GLOBALS['_configuration']->encryption($name);
+    }
+
+    public static function mail($name) {
+        return $GLOBALS['_configuration']->mail($name);
+    }
+
+    public static function authentication($name) {
+        return $GLOBALS['_configuration']->authentication($name);
     }
 
 }

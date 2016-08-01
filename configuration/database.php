@@ -14,7 +14,7 @@ return array(
     'host' => 'localhost',
     
     /**
-     * The username to used to connect to the database.
+     * The username used to connect to the database.
      * 
      */
     'username' => 'dba',
@@ -26,7 +26,7 @@ return array(
     'password' => 'password',
     
     /**
-     * The database name to connect to.
+     * The database to connect to.
      * 
      */
     'dbname' => 'template'

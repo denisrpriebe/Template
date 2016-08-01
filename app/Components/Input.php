@@ -11,7 +11,7 @@ class Input implements ComponentContract {
      * 
      * @param array $settings
      */
-    public function __construct($settings = array()) {
+    public function __construct(array $settings = null) {
         ;
     }
 

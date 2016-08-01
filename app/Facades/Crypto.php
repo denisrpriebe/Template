@@ -2,7 +2,7 @@
 
 namespace App\Facades;
 
-class Encryption {
+class Crypto {
 
     public static function hash($value) {
         return $GLOBALS['_encryption']->hash($value);

@@ -11,7 +11,7 @@ class Session implements ComponentContract {
      * 
      * @param array $settings
      */
-    public function __construct($settings = array()) {
+    public function __construct(array $settings) {
 
         session_name($settings['name']);
         session_start();
@@ -36,6 +36,16 @@ class Session implements ComponentContract {
      */
     public function remove($name) {
         unset($_SESSION[$name]);
+    }
+
+    /**
+     * Determine if the session has the given value.
+     *
+     * @param string $name
+     * @return boolean
+     */
+    public function has($name) {
+        return isset($_SESSION[$name]) ? true : false;
     }
 
     /**

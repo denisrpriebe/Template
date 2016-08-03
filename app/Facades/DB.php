@@ -12,6 +12,10 @@ class DB {
         return $GLOBALS['_database']->insert($sql);
     }
 
+    public static function update($sql) {
+        return $GLOBALS['_database']->update($sql);
+    }
+
     public static function clean($value) {
         return $GLOBALS['_database']->clean($value);
     }

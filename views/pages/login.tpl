@@ -1,16 +1,26 @@
-{extends file="../layout/app.tpl"}
+<[extends file="../layout/app.tpl"]>
 
-{block name="page-title"}Login{/block}
+<[block name="page-title"]>Login<[/block]>
 
-{block name="page-content"}
+<[block name="page-script"]>
+    <script>
+
+        $(document).ready(function() {
+            console.log('I am Ready!');
+        });
+
+    </script>
+<[/block]>
+
+<[block name="page-content"]>
     <div class="container">
-        
+
         <div class="row">
             <div class="col-md-12">
-                {include file="../layout/partials/alerts.tpl"}
+                <[include file="../layout/partials/alerts.tpl"]>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-md-12">
                 <div class="jumbotron">
@@ -37,6 +47,7 @@
                 </form>
             </div>
         </div>
+
     </div>
-{/block}
+<[/block]>
 

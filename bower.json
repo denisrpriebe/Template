@@ -22,7 +22,7 @@
   "dependencies": {
     "jquery": "3.1.0",
     "bootstrap": "3.3.7",
-    "angular": "1.5.9"
+    "angular": "1.5.9-build.4969+sha.494d12f"
   },
   "resolutions": {
     "jquery": "3.1.0"

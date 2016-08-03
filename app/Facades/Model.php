@@ -5,7 +5,7 @@ namespace App\Facades;
 class Model {
 
     /**
-     * Get a model from the database by the given id.
+     * Gets a model from the database by the given id.
      * 
      * @param string|int $id
      * @return object
@@ -16,6 +16,10 @@ class Model {
 
     public static function save(array $modelData) {
         return $GLOBALS[static::getRegisteredModelName()]->save($modelData);
+    }
+    
+    public static function update($id, array $modelData) {
+        return $GLOBALS[static::getRegisteredModelName()]->update($id, $modelData);
     }
 
     public static function all() {

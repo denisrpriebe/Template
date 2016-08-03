@@ -34,6 +34,8 @@ class View extends \Smarty implements ComponentContract {
         parent::__construct();
 
         $this->setCompileDir('./compiled_views');
+        $this->left_delimiter = "<[";
+        $this->right_delimiter = "]>";
 
         $this->views = $settings['views'];
         $this->assets = $settings['assets'];

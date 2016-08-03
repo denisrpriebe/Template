@@ -40,6 +40,10 @@ class Database extends \mysqli implements ComponentContract {
         return parent::query($sql);
     }
 
+    public function update($sql) {
+        return parent::query($sql);
+    }
+
     /**
      * Prepares the given value to be inserted into the database.
      * 

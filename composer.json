@@ -14,7 +14,8 @@
     "require": {
         "smarty/smarty": "~3.1",
         "nesbot/carbon": "~1.21",
-        "phpmailer/phpmailer": "^5.2"
+        "phpmailer/phpmailer": "^5.2",
+        "respect/validation": "^0.9.8"
     },
     "autoload": {
         "psr-4": {

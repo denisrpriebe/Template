@@ -8,44 +8,52 @@ class Encryption implements ComponentContract {
 
     /**
      * The first layer of protection.
-     * 
-     * @var string 
+     *
+     * @var string
      */
     protected $salt;
 
     /**
      * The second layer of protection.
+     *
+     * @var string
+     */
+    protected $pepper;
+    
+    /**
+     * The third layer of protection.
      * 
      * @var string 
      */
-    protected $pepper;
+    protected $cumin;
 
     /**
      * Creates an instance of the encryption.
-     * 
+     *
      * @param type $settings
      */
     public function __construct(array $settings) {
         $this->salt = $settings['salt'];
         $this->pepper = $settings['pepper'];
+        $this->cumin = $settings['cumin'];
     }
 
     /**
      * Hashes the given value.
-     * 
+     *
      * @param string $value
      * @return string
      */
     public function hash($value) {
-        return sha1(md5($value . $this->salt) . $this->pepper);
+        return hash('sha512', sha1(md5($value . $this->salt) . $this->pepper) . $this->cumin);
     }
 
     public function encrypt($value) {
-        
+
     }
-    
+
     public function decrypt($value) {
-        
+
     }
-    
+
 }

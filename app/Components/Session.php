@@ -8,7 +8,7 @@ class Session implements ComponentContract {
 
     /**
      * Creates an instance of the session.
-     * 
+     *
      * @param array $settings
      */
     public function __construct(array $settings) {
@@ -16,12 +16,41 @@ class Session implements ComponentContract {
         session_name($settings['name']);
         session_start();
 
+        // Make sure we have a fingerprint set
+        if (!isset($_SESSION['_fingerprint'])) {
+            session_regenerate_id(true);
+            $this->setFingerprint();
+        }
+
+        if ($_SESSION['_fingerprint']['ip'] !== filter_input(INPUT_SERVER, 'REMOTE_ADDR')) {
+            session_regenerate_id(true);
+            $this->destroyData();
+            $this->setFingerprint();
+        }
+
+        // Regenerate session ID every five minutes:
+        if ($_SESSION['_fingerprint']['birth'] < (time() - 300)) {
+            session_regenerate_id(true);
+            $_SESSION['_fingerprint']['birth'] = time();
+        }
+
         $this->checkFlash();
     }
 
     /**
-     * Store a value in the session.
+     * Sets/creates the session "fingerprint"
      * 
+     */
+    private function setFingerprint() {
+        $_SESSION['_fingerprint'] = array(
+            'birth' => time(),
+            'ip' => filter_input(INPUT_SERVER, 'REMOTE_ADDR')
+        );
+    }
+
+    /**
+     * Store a value in the session.
+     *
      * @param string $name
      * @param mixed $object
      */
@@ -31,7 +60,7 @@ class Session implements ComponentContract {
 
     /**
      * Remove a stored value from the session
-     * 
+     *
      * @param string $name
      */
     public function remove($name) {
@@ -50,7 +79,7 @@ class Session implements ComponentContract {
 
     /**
      * Grab a value from the session.
-     * 
+     *
      * @param string $name
      * @return mixed
      */
@@ -59,16 +88,27 @@ class Session implements ComponentContract {
     }
 
     /**
-     * Destory the current session and all of its data.
-     * 
+     * Destroys the current session itself and all of its data.
+     *
      */
     public function destroy() {
         session_destroy();
     }
 
     /**
-     * Flash an object to the session.
+     * Destroys all data related to the current session but keeps the session
+     * itself intact.
      * 
+     */
+    public function destroyData() {
+        foreach (array_keys($_SESSION) as $key) {
+            unset($_SESSION[$key]);
+        }
+    }
+
+    /**
+     * Flash an object to the session.
+     *
      * @param type $name
      * @param type $object
      */

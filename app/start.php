@@ -72,7 +72,8 @@ $application->addComponent($view, '_view');
 // Initialize the encryption component
 $encryption = new Components\Encryption(array(
     'salt' => Config::encryption('salt'),
-    'pepper' => Config::encryption('pepper')
+    'pepper' => Config::encryption('pepper'),
+    'cumin' => Config::encryption('cumin')
 ));
 
 // Register the encryption with the application

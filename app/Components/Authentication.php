@@ -27,22 +27,22 @@ class Authentication implements ComponentContract {
         ));
 
         if ($user) {
-            Sess::store('_user', $user);
+            Sess::store('_authUserId', $user->id);
         }
 
         return $user ? true : false;
     }
 
     public function user() {
-        return Sess::get('_user');
+        return User::find(Sess::get('_authUserId'));
     }
 
     public function logout() {
-        Sess::remove('_user');
+        Sess::remove('_authUserId');
     }
 
     public function guard() {
-        if (!$this->user()) {
+        if (!Sess::has('_authUserId')) {
             Redirect::to($this->guardRedirect);
         }
     }

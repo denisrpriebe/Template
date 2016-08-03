@@ -4,6 +4,7 @@
  * Encryption Configuration
  * 
  * Password salting and other encryption based settings are configured here.
+ * Please keep this information private.
  */
 return array(
     
@@ -18,5 +19,11 @@ return array(
      * 
      */
     'pepper' => 'db42DSt9Dds8xszq',
+    
+    /**
+     * This is appended to the very last hashing algorithim.
+     * 
+     */
+    'cumin' => 'ChxsRfPZbjqwKuQ8',
     
 );

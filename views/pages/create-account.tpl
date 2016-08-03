@@ -23,6 +23,14 @@
 
         <div class="row">
             <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1>Create Account Page</h1> 
+                    <p>Here is a basic example of a create acount page.</p>                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <div class="well">
                     <form role="form" method="post" action="requests/post/create-account.php">
                         <div class="form-group">

@@ -25,7 +25,8 @@
             <div class="col-md-12">
                 <div class="jumbotron">
                     <h1>Login Page</h1> 
-                    <p>Here is a basic example of a login page.</p> 
+                    <p>Here is a basic example of a login page.</p>
+                    <a href="create-account.php" class="btn btn-success" role="button">Create Account</a>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../../app/start.php';
+require_once '../../app/start.php';
 
 use App\Facades\Input;
 use App\Facades\Auth;

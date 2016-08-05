@@ -16,7 +16,7 @@
         <[block name="page-script"]><[/block]>
 
     </head>
-    <body>
-        <[block name="page-content"]><[/block]>
+    <body>        
+        <[block name="page-content"]><[/block]>             
     </body>
 </html>

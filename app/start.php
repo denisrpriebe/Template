@@ -2,6 +2,9 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+// Set our timezone
+ini_set("date.timezone", "America/Chicago");
+
 use App\Models;
 use App\Components;
 use App\Facades\Config;

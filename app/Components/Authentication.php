@@ -22,8 +22,8 @@ class Authentication implements ComponentContract {
     public function check(array $credentials) {
 
         $user = User::where(array(
-            array($this->name, '=', $credentials[$this->name]),
-            array($this->password, '=', $credentials[$this->password])
+                    array($this->name, '=', $credentials[$this->name]),
+                    array($this->password, '=', $credentials[$this->password])
         ));
 
         if ($user) {
@@ -43,6 +43,13 @@ class Authentication implements ComponentContract {
 
     public function guard() {
         if (!Sess::has('_authUserId')) {
+
+            Sess::flash('alert', array(
+                'type' => 'warning',
+                'title' => 'Authentication Required',
+                'text' => 'You must be logged in to access this system.'
+            ));
+
             Redirect::to($this->guardRedirect);
         }
     }

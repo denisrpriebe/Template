@@ -11,7 +11,7 @@ Auth::logout();
 Session::flash('alert', array(
     'type' => 'info',
     'title' => 'Logged Out',
-    'text' => 'You have successfully logged out.'
+    'text' => 'You have successfully logged out. See you again soon!'
 ));
 
 Redirect::to('/login.php');

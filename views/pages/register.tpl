@@ -1,6 +1,6 @@
 <[extends file="../layout/app.tpl"]>
 
-<[block name="page-title"]>Application Name : : Login<[/block]>
+<[block name="page-title"]>Application Name : : Register<[/block]>
 
 <[block name="page-script"]>
     <script>
@@ -8,15 +8,15 @@
 
             /**
              * Page Background
-             * 
+             *
              */
             $.backstretch('assets/images/background-blue-2.jpg');
 
             /**
-             * Login Form Validation
+             * Registration Form Validation
              *
              */
-            $('#loginForm').formValidation({
+            $('#registrationForm').formValidation({
                 framework: 'bootstrap',
                 icon: {
                     valid: 'glyphicon glyphicon-ok',
@@ -34,6 +34,20 @@
                             }
                         }
                     },
+                    first_name: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please enter your first name.'
+                            }
+                        }
+                    },
+                    last_name: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Please enter your last name.'
+                            }
+                        }
+                    },
                     password: {
                         validators: {
                             notEmpty: {
@@ -48,34 +62,34 @@
                     }
                 }
             }).on('success.form.fv', function(e) {
-                $('#loginBtn').addClass('m-progress');
+                $('#registerBtn').addClass('m-progress');
             }).on('error.form.fv', function(e) {
                 console.log('Form is bad');
             });
 
-        });
 
+        });
     </script>
 <[/block]>
 
 <[block name="page-content"]>
 
-    <div class="login-container">
+    <div class="register-container">
 
         <[include file="../layout/partials/alerts.tpl"]>
 
         <div class="login-box panel panel-primary panel-transparent">
             <div class="panel-heading">
-                <span class="glyphicon glyphicon-log-in"></span> Login
+                <span class="glyphicon glyphicon-plus-sign"></span> Register
                 <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-primary btn-xs" onclick="goto('register.php', this)">
-                        <span class="glyphicon glyphicon-plus-sign"></span> Register
+                    <button type="button" class="btn btn-primary btn-xs" onclick="goto('login.php', this)">
+                        <span class="glyphicon glyphicon-log-in"></span> Login
                     </button>
                 </div>
             </div>
             <div class="panel-body">
 
-                <form role="form" method="post" action="requests/login.php" id="loginForm">
+                <form role="form" method="post" action="requests/register.php" id="registrationForm">
                     <div class="form-group">
                         <label for="loginEmail">Email:</label>
                         <div class="input-group">
@@ -86,18 +100,35 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="loginPassword">Password:</label>
+                        <label for="loginFirstName">First Name:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="firstNameAddon">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </span>
+                            <input id="loginFirstName" name="first_name" type="text" class="form-control" placeholder="First Name" aria-describedby="firstNameAddon" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginLastName">Last Name:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="lastNameAddon">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </span>
+                            <input id="loginLastName" name="last_name" type="text" class="form-control" placeholder="Last Name" aria-describedby="lastNameAddon" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">New Password:</label>
                         <div class="input-group">
                             <span class="input-group-addon" id="passwordAddon">
                                 <span class="glyphicon glyphicon-lock"></span>
                             </span>
-                            <input id="loginPassword" name="password" type="password" class="form-control" placeholder="Password" aria-describedby="passwordAddon" required>
+                            <input id="loginPassword" name="password" type="password" class="form-control" placeholder="New Password" aria-describedby="passwordAddon" required>
                         </div>
                     </div>
-                    <button id="loginBtn" type="submit" class="btn btn-primary btn-block">
-                        <span class="glyphicon glyphicon-log-in"></span> Login
+                    <button id="registerBtn" type="submit" class="btn btn-primary btn-block">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Register
                     </button>
-                    <button type="button" class="btn btn-link btn-block forgot-password" onclick="goto('forgot-password.php')">Forgot Password?</button>
                 </form>
 
             </div>

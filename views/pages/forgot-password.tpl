@@ -1,6 +1,6 @@
 <[extends file="../layout/app.tpl"]>
 
-<[block name="page-title"]>Application Name : : Login<[/block]>
+<[block name="page-title"]>Application Name : : Forgot Password<[/block]>
 
 <[block name="page-script"]>
     <script>
@@ -8,7 +8,7 @@
 
             /**
              * Page Background
-             * 
+             *
              */
             $.backstretch('assets/images/background-blue-2.jpg');
 
@@ -16,7 +16,7 @@
              * Login Form Validation
              *
              */
-            $('#loginForm').formValidation({
+            $('#forgotPasswordForm').formValidation({
                 framework: 'bootstrap',
                 icon: {
                     valid: 'glyphicon glyphicon-ok',
@@ -33,22 +33,10 @@
                                 message: 'Please enter a valid email address.'
                             }
                         }
-                    },
-                    password: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Please enter your password.'
-                            },
-                            stringLength: {
-                                min: 5,
-                                max: 30,
-                                message: 'Your password must be more than 5 and less than 30 characters long.'
-                            }
-                        }
                     }
                 }
             }).on('success.form.fv', function(e) {
-                $('#loginBtn').addClass('m-progress');
+                $('#sendEmailBtn').addClass('m-progress');
             }).on('error.form.fv', function(e) {
                 console.log('Form is bad');
             });
@@ -66,16 +54,19 @@
 
         <div class="login-box panel panel-primary panel-transparent">
             <div class="panel-heading">
-                <span class="glyphicon glyphicon-log-in"></span> Login
+                <span class="glyphicon glyphicon-question-sign"></span> Forgot Password
                 <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-primary btn-xs" onclick="goto('register.php', this)">
-                        <span class="glyphicon glyphicon-plus-sign"></span> Register
+                    <button type="button" class="btn btn-primary btn-xs" onclick="goto('login.php', this)">
+                        <span class="glyphicon glyphicon-log-in"></span> Login
                     </button>
                 </div>
             </div>
             <div class="panel-body">
 
-                <form role="form" method="post" action="requests/login.php" id="loginForm">
+                <form role="form" method="post" action="requests/send-forgot-password-email.php" id="forgotPasswordForm">
+                    <p>
+                        Please enter the email that is associated with your account. We will email you a password reset link.
+                    </p>
                     <div class="form-group">
                         <label for="loginEmail">Email:</label>
                         <div class="input-group">
@@ -85,19 +76,9 @@
                             <input id="loginEmail" name="email" type="email" class="form-control" placeholder="Email" aria-describedby="usernameAddon" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="loginPassword">Password:</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="passwordAddon">
-                                <span class="glyphicon glyphicon-lock"></span>
-                            </span>
-                            <input id="loginPassword" name="password" type="password" class="form-control" placeholder="Password" aria-describedby="passwordAddon" required>
-                        </div>
-                    </div>
-                    <button id="loginBtn" type="submit" class="btn btn-primary btn-block">
-                        <span class="glyphicon glyphicon-log-in"></span> Login
+                    <button id="sendEmailBtn" type="submit" class="btn btn-primary btn-block">
+                        <span class="glyphicon glyphicon-send"></span> Send Email
                     </button>
-                    <button type="button" class="btn btn-link btn-block forgot-password" onclick="goto('forgot-password.php')">Forgot Password?</button>
                 </form>
 
             </div>

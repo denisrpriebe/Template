@@ -1,7 +1,8 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+function ajax(location, data) {
 
+}
 
+function goto(destination, btn) {
+    btn ? $(btn).addClass('m-progress') : false;
+    window.location.href = destination;
+}

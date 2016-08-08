@@ -132,3 +132,6 @@ $application->addComponent($redirect, '_redirect');
 
 $user = new Models\User();
 $application->addModel($user, '_user');
+
+$role = new Models\Role();
+$application->addModel($role, '_role');

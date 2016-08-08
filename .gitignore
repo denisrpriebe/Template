@@ -1,5 +1,6 @@
 public/assets/components
 public/compiled_views
 public/auth/compiled_views
+public/requests/compiled_views
 vendor
 nbproject

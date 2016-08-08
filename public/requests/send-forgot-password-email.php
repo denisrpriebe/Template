@@ -7,13 +7,16 @@ use App\Facades\Redirect;
 use App\Facades\Crypto;
 use App\Facades\Session;
 use App\Facades\Models\User;
+use App\Facades\Mail;
+use App\Facades\View;
 use Carbon\Carbon;
 
-$user = User::where(array(
+$userFound = User::where(array(
     array('email', '=', Input::post('email'))
 ));
 
-if (!$user) {
+if (!$userFound) {
+
     Session::flash('alert', array(
         'type' => 'danger',
         'title' => 'Unknown Email',
@@ -23,18 +26,39 @@ if (!$user) {
     Redirect::to('/forgot-password.php');
 }
 
-User::update($user->id, array(
-    'password_reset_link' => Crypto::hash(Carbon::now()->toDateTimeString() . uniqid()),
+User::update($userFound->id, array(
+    'password_reset_token' => Crypto::passwordResetToken(),
     'password_reset_expires' => Carbon::now()->addMinutes(10)->toDateTimeString(),
     'updated_on' => Carbon::now()->toDateTimeString()
 ));
 
-// Send email here.
+// Refresh the user after we made updates
+$user = User::find($userFound->id);
 
-Session::flash('alert', array(
-    'type' => 'success',
-    'title' => 'Password Reset Email Sent',
-    'text' => 'A password reset email has been sent to "' . $user->email . '". Please follow the instructions in this email to reset your password.'
+View::add('user', $user);
+
+$emailSent = Mail::send(array(
+    'to' => $user->email,
+    'subject' => 'Template Test Email',
+    'body' => View::make('emails/reset-password-email')
 ));
 
-Redirect::to('/login.php');
+if ($emailSent) {
+
+    Session::flash('alert', array(
+        'type' => 'success',
+        'title' => 'Password Reset Email Sent',
+        'text' => 'A password reset email has been sent to "' . $user->email . '". Please follow the instructions in this email to reset your password.'
+    ));
+
+    Redirect::to('/login.php');
+} else {
+    
+    Session::flash('alert', array(
+        'type' => 'danger',
+        'title' => 'Email Failure',
+        'text' => 'There was a problem trying to send the password reset email.'
+    ));
+
+    Redirect::to('/login.php');
+}

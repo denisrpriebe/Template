@@ -3,6 +3,7 @@
 namespace App\Components;
 
 use App\Contracts\ComponentContract;
+use Carbon\Carbon;
 
 class Encryption implements ComponentContract {
 
@@ -48,6 +49,10 @@ class Encryption implements ComponentContract {
         return hash('sha512', sha1(md5($value . $this->salt) . $this->pepper) . $this->cumin);
     }
 
+    public function passwordResetToken() {
+        return hash('sha512', Carbon::now()->toDateTimeString() . uniqid());
+    }
+    
     public function encrypt($value) {
 
     }

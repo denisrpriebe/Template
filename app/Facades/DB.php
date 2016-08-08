@@ -19,5 +19,9 @@ class DB {
     public static function clean($value) {
         return $GLOBALS['_database']->clean($value);
     }
+    
+    public static function truncate() {
+        return $GLOBALS['_database']->truncate();
+    }
 
 }

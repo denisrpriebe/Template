@@ -103,6 +103,11 @@ abstract class Model {
         return DB::query($sql);
     }
 
+    public function truncate() {
+        $sql = 'TRUNCATE ' . $this->tableName;
+        return DB::update($sql);
+    }
+
     /**
      * Returns the name of the table columns.
      *

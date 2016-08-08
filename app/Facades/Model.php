@@ -30,6 +30,10 @@ class Model {
         return $GLOBALS[static::getRegisteredModelName()]->where($conditions);
     }
 
+    public static function truncate() {
+        return $GLOBALS[static::getRegisteredModelName()]->truncate();
+    }
+
     private static function getRegisteredModelName() {
         $class = new \ReflectionClass(get_called_class());
         return '_' . strtolower($class->getShortName());

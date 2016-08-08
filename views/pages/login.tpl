@@ -4,13 +4,7 @@
 
 <[block name="page-script"]>
     <script>
-        $(document).ready(function() {
-
-            /**
-             * Page Background
-             * 
-             */
-            $.backstretch('assets/images/background-blue-2.jpg');
+        $(document).ready(function() {            
 
             /**
              * Login Form Validation
@@ -42,7 +36,7 @@
                             stringLength: {
                                 min: 5,
                                 max: 30,
-                                message: 'Your password must be more than 5 and less than 30 characters long.'
+                                message: 'Your password must be more than 5 characters.'
                             }
                         }
                     }

@@ -25,6 +25,10 @@ class Database extends \mysqli implements ComponentContract {
         $data = array();
         $result = parent::query($sql);
 
+        if (!$result) {
+            return $data;
+        }
+        
         if ($result->num_rows == 1) {
             return $result->fetch_object();
         } else if ($result->num_rows > 1) {

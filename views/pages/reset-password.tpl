@@ -4,13 +4,7 @@
 
 <[block name="page-script"]>
     <script>
-        $(document).ready(function() {
-
-            /**
-             * Page Background
-             *
-             */
-            $.backstretch('assets/images/background-blue-3.jpg');
+        $(document).ready(function () {
 
             /**
              * Login Form Validation
@@ -30,7 +24,7 @@
                                 message: 'Please enter a new password.'
                             },
                             stringLength: {
-                                min: 5,                                
+                                min: 5,
                                 message: 'Your password must be at least 5 characters long.'
                             }
                         }
@@ -47,9 +41,9 @@
                         }
                     }
                 }
-            }).on('success.form.fv', function(e) {
+            }).on('success.form.fv', function (e) {
                 $('#sendEmailBtn').addClass('m-progress');
-            }).on('error.form.fv', function(e) {
+            }).on('error.form.fv', function (e) {
                 console.log('Form is bad');
             });
 
@@ -66,11 +60,12 @@
 
         <div class="login-box panel panel-primary panel-transparent">
             <div class="panel-heading">
-                <span class="glyphicon glyphicon-refresh"></span> Reset Password                
+                <span class="glyphicon glyphicon-refresh"></span> Reset Password
             </div>
             <div class="panel-body">
 
-                <form role="form" method="post" action="requests/reset-password.php" id="resetPasswordForm">                    
+                <form role="form" method="post" action="requests/reset-password.php" id="resetPasswordForm">
+                    <input type="hidden" name="password_reset_token" value="<[$passwordResetToken]>">
                     <div class="form-group">
                         <label for="newPassword">New Password:</label>
                         <div class="input-group">

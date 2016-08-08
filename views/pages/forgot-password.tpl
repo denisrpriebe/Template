@@ -4,13 +4,7 @@
 
 <[block name="page-script"]>
     <script>
-        $(document).ready(function() {
-
-            /**
-             * Page Background
-             *
-             */
-            $.backstretch('assets/images/background-blue-2.jpg');
+        $(document).ready(function () {            
 
             /**
              * Login Form Validation
@@ -35,9 +29,9 @@
                         }
                     }
                 }
-            }).on('success.form.fv', function(e) {
+            }).on('success.form.fv', function (e) {
                 $('#sendEmailBtn').addClass('m-progress');
-            }).on('error.form.fv', function(e) {
+            }).on('error.form.fv', function (e) {
                 console.log('Form is bad');
             });
 
@@ -56,7 +50,7 @@
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-question-sign"></span> Forgot Password
                 <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-primary btn-xs" onclick="goto('login.php', this)">
+                    <button type="button" class="btn btn-primary btn-xs" onclick="goto('login.php', this);">
                         <span class="glyphicon glyphicon-log-in"></span> Login
                     </button>
                 </div>
@@ -64,9 +58,7 @@
             <div class="panel-body">
 
                 <form role="form" method="post" action="requests/send-forgot-password-email.php" id="forgotPasswordForm">
-                    <p>
-                        Please enter the email that is associated with your account. We will email you a password reset link.
-                    </p>
+                    <p>Please enter the email that is associated with your account. We will email you a password reset link.</p>
                     <div class="form-group">
                         <label for="loginEmail">Email:</label>
                         <div class="input-group">

@@ -1,8 +1,17 @@
-function ajax(location, data) {
+$(document).ready(function () {
 
+    /**
+     * Page Background
+     * 
+     */
+    $.backstretch('assets/images/background-blue-9.jpg');
+
+});
+
+function ajax(location, data) {
+    
 }
 
-function goto(destination, btn) {
-    btn ? $(btn).addClass('m-progress') : false;
+function goto(destination) {
     window.location.href = destination;
 }

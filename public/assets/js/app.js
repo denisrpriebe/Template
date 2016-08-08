@@ -19,7 +19,7 @@ $(document).ready(function() {
 });
 
 /**
- * Submits a the fiven form via ajax.
+ * Submits the given form via ajax.
  * 
  * @param {jQuery Object} form
  * @param {function} callback
@@ -35,7 +35,8 @@ function submitForm(form, callback) {
             showAlert(response);
         },
         error: function(xhr, status, error) {
-            console.log('Error in the submitForm function.');
+            console.log('Error in the submitForm function:');
+            console.log(error);
         },
         complete: function(xhr, status) {
             callback();

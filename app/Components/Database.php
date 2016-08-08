@@ -6,6 +6,9 @@ use App\Contracts\ComponentContract;
 
 class Database extends \mysqli implements ComponentContract {
 
+    protected $sqlString = '';
+
+
     /**
      * Creates an instance of the database.
      *
@@ -56,6 +59,30 @@ class Database extends \mysqli implements ComponentContract {
      */
     public function clean($value) {
         return $this->real_escape_string($value);
+    }
+    
+    public function select($sql) {
+        $this->sqlString .= 'SELECT ' . $sql . ' ';
+        return $this;
+    }
+    
+    public function from($sql) {
+        $this->sqlString .= 'FROM ' . $sql . ' ';
+        return $this;
+    }
+    
+    public function join($sql) {
+        $this->sqlString .= 'JOIN ' . $sql . ' ';
+        return $this;
+    }
+    
+    public function on($sql) {
+        $this->sqlString .= 'ON ' . $sql . ' ';
+        return $this;
+    }
+    
+    public function exec() {
+        return $this->query($this->sqlString);
     }
 
 }

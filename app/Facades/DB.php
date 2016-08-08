@@ -23,5 +23,9 @@ class DB {
     public static function truncate() {
         return $GLOBALS['_database']->truncate();
     }
+    
+    public static function select($sql) {
+        return $GLOBALS['_database']->select($sql);
+    }
 
 }

@@ -12,9 +12,5 @@ class User extends Model {
      * @var type 
      */
     protected $tableName = 'users';
-
-    protected $hasMany = array(
-        'roles'
-    );
     
 }

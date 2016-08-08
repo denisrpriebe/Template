@@ -13,4 +13,8 @@ class User extends Model {
      */
     protected $tableName = 'users';
 
+    protected $hasMany = array(
+        'roles'
+    );
+    
 }

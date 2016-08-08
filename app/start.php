@@ -26,7 +26,8 @@ $configuration = new Components\Configuration(array(
     'session' => require_once __DIR__ . '/../configuration/session.php',
     'encryption' => require_once __DIR__ . '/../configuration/encryption.php',
     'mail' => require_once __DIR__ . '/../configuration/mail.php',
-    'authentication' => require_once __DIR__ . '/../configuration/authentication.php'
+    'authentication' => require_once __DIR__ . '/../configuration/authentication.php',
+    'navigation' => require_once __DIR__ . '/../configuration/navigation.php',
 ));
 
 // Register the configuration with the application
@@ -55,20 +56,6 @@ $session = new Components\Session(array(
 
 // Register the session with the application
 $application->addComponent($session, '_session');
-
-// -----------------------------------------------------------------------------
-
-// Initialize the view component
-$view = new Components\View(array(
-    'views' => Config::paths('views'),
-    'assets' => Config::paths('assets')
-));
-
-$view->integrate('Session', 'App\Facades\Session');
-$view->integrate('View', 'App\Facades\View');
-
-// Register the view with the application
-$application->addComponent($view, '_view');
 
 // -----------------------------------------------------------------------------
 
@@ -124,6 +111,27 @@ $redirect = new Components\Redirect(array(
 $application->addComponent($redirect, '_redirect');
 
 // -----------------------------------------------------------------------------
+
+$navigation = new Components\Navigation(Config::navigation('nav'));
+
+$application->addComponent($navigation, '_navigation');
+
+// -----------------------------------------------------------------------------
+
+// Initialize the view component
+$view = new Components\View(array(
+    'views' => Config::paths('views'),
+    'assets' => Config::paths('assets')
+));
+
+$view->integrate('Session', 'App\Facades\Session');
+$view->integrate('View', 'App\Facades\View');
+$view->integrate('Nav', 'App\Facades\Nav');
+
+// Register the view with the application
+$application->addComponent($view, '_view');
+
+// -----------------------------------------------------------------------------
 // | Register Models
 // -----------------------------------------------------------------------------
 // | Models may be initialized here and also registered with the
@@ -135,3 +143,13 @@ $application->addModel($user, '_user');
 
 $role = new Models\Role();
 $application->addModel($role, '_role');
+
+// -----------------------------------------------------------------------------
+// | Global View Registration
+// -----------------------------------------------------------------------------
+// | If all of your views need access to a variable or object, it may be added
+// | here instead of on every controller.
+// -----------------------------------------------------------------------------
+
+$view->add('user', $authentication->user());
+$view->add('nav', $navigation->nav());

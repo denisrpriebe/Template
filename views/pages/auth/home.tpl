@@ -4,7 +4,7 @@
 
 <[block name="page-script"]>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
 
         });
@@ -18,7 +18,6 @@
     <div class="container">
         <[include file="../layout/partials/alerts.tpl"]>
     </div>
-
 
 <[/block]>
 

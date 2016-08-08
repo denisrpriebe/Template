@@ -3,21 +3,34 @@
  | Bootstrap Overrides
  |--------------------------------------------------------------------------
  |
- | Any styles that need to be applied only for the login page can be added
- | here.
+ | Override any default bootstrap styles here.
  |
 */
 .panel {
     background-color: rgba(255, 255, 255, .70);
+    -webkit-box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
+    -moz-box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
+    box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
+}
+.navbar {
+    -webkit-box-shadow: 0 6px 15px -4px rgba(0,0,0,.375);
+    -moz-box-shadow: 0 6px 15px -4px rgba(0,0,0,.375);
+    box-shadow: 0 6px 15px -4px rgba(0,0,0,.375);
+
+}
+.alert {
+    -webkit-box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
+    -moz-box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
+    box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
 }
 
 /*
  |--------------------------------------------------------------------------
- | Login Page
+ | Un-Authenticated Pages
  |--------------------------------------------------------------------------
  |
- | Any styles that need to be applied only for the login page can be added
- | here.
+ | Any styles that need to be applied before a user is logged in can be
+ | added here.
  |
 */
 .login-container {
@@ -30,29 +43,18 @@
     -webkit-transform: translate(-50%, -50%);
 
 }
-.text-x-small {
-    font-size: x-small;
-}
-.forgot-password {
-    padding: 5px 0px 0px 0px;
-    margin-bottom: -5px;
-}
-
-/*
- |--------------------------------------------------------------------------
- | Registration Page
- |--------------------------------------------------------------------------
- |
- | Any styles that need to be applied only for the registration page can be
- | added here.
- |
-*/
-.register-container {
+.centered-container {
     width: 300px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
-
+}
+.text-x-small {
+    font-size: x-small;
+}
+.forgot-password {
+    padding: 5px 0px 0px 0px;
+    margin-bottom: -5px;
 }

@@ -10,24 +10,39 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
+                <[if isset($nav)]>
+                    <[foreach from=$nav key=key item=settings]>
+                        <[if isset($settings['children'])]>
+                            <li class="dropdown <[if in_array($key, Nav::getActiveTabs())]>active<[/if]>">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="<[$settings['href']]>"><[$settings['icon']]> <[$settings['text']]>
+                                    <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <[foreach from=$settings['children'] key=childKey item=childSettings]>
+                                        <li class="<[if in_array($childKey, Nav::getActiveTabs())]>active<[/if]>">
+                                            <a href="<[$childSettings['href']]>"><[$childSettings['icon']]> <[$childSettings['text']]></a>
+                                        </li>
+                                    <[/foreach]>
+                                </ul>
+                            </li>
+                        <[else]>
+                            <li class="<[if in_array($key, Nav::getActiveTabs())]>active<[/if]>"><a href="<[$settings['href']]>"><[$settings['icon']]> <[$settings['text']]></a></li>
+                        <[/if]>
+                    <[/foreach]>
+                <[/if]>
             </ul>
-            <ul class="nav navbar-nav navbar-right">                
+            <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <span class="glyphicon glyphicon-user"></span> <[$user->first_name]> <[$user->last_name]>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li>                            
+                        <li>
                             <a href="#"><span class="glyphicon glyphicon-cog"></span> Preferences</a>
                         </li>
-                        <li>                            
+                        <li>
                             <a href="../logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
-                        </li>                        
+                        </li>
                     </ul>
                 </li>
             </ul>

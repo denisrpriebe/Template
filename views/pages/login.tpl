@@ -62,7 +62,7 @@
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-log-in"></span> Login
                 <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-primary btn-xs" onclick="goto('register.php', this)">
+                    <button type="button" class="btn btn-primary btn-xs loading-button" onclick="goto('register.php', this)">
                         <span class="glyphicon glyphicon-plus-sign"></span> Register
                     </button>
                 </div>

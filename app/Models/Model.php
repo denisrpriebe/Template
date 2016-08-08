@@ -103,8 +103,13 @@ abstract class Model {
         return DB::query($sql);
     }
 
+    /**
+     * This method does not work correctly yet.
+     * 
+     * @return type
+     */
     public function truncate() {
-        $sql = 'TRUNCATE ' . $this->tableName;
+        $sql = 'TRUNCATE ' . $this->tableName . '';
         return DB::update($sql);
     }
 

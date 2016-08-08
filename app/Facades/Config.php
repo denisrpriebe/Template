@@ -27,5 +27,9 @@ class Config {
     public static function authentication($name) {
         return $GLOBALS['_configuration']->authentication($name);
     }
+    
+    public static function navigation($name) {
+        return $GLOBALS['_configuration']->navigation($name);
+    }
 
 }

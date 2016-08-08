@@ -35,5 +35,9 @@ class Configuration implements ComponentContract {
     public function authentication($name) {
         return $this->configurations['authentication'][$name];
     }
+    
+    public function navigation($name) {
+        return $this->configurations['navigation'][$name];
+    }
 
 }

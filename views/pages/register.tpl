@@ -68,7 +68,7 @@
 
 <[block name="page-content"]>
 
-    <div class="register-container">
+    <div class="centered-container">
 
         <[include file="../layout/partials/alerts.tpl"]>
 
@@ -76,7 +76,7 @@
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-plus-sign"></span> Register
                 <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-primary btn-xs" onclick="goto('login.php', this)">
+                    <button type="button" class="btn btn-primary btn-xs loading-button" onclick="goto('login.php', this)">
                         <span class="glyphicon glyphicon-log-in"></span> Login
                     </button>
                 </div>

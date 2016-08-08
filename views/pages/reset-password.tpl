@@ -54,7 +54,7 @@
 
 <[block name="page-content"]>
 
-    <div class="login-container">
+    <div class="centered-container">
 
         <[include file="../layout/partials/alerts.tpl"]>
 

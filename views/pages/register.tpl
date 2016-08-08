@@ -4,13 +4,7 @@
 
 <[block name="page-script"]>
     <script>
-        $(document).ready(function() {
-
-            /**
-             * Page Background
-             *
-             */
-            $.backstretch('assets/images/background-blue-2.jpg');
+        $(document).ready(function() {           
 
             /**
              * Registration Form Validation

@@ -18,8 +18,58 @@ $(document).ready(function() {
 
 });
 
-function ajax(location, data) {
+/**
+ * Submits a the fiven form via ajax.
+ * 
+ * @param {jQuery Object} form
+ * @param {function} callback
+ * @returns {void}
+ */
+function submitForm(form, callback) {
+    $.ajax({
+        method: form.attr('method'),
+        url: form.attr('action'),
+        data: form.serializeArray(),
+        dataType: 'json',
+        success: function(response, status, xhr) {
+            showAlert(response);
+        },
+        error: function(xhr, status, error) {
+            console.log('Error in the submitForm function.');
+        },
+        complete: function(xhr, status) {
+            callback();
+        }
+    });
+}
 
+/**
+ * Shows an alert after an ajax call has been made.
+ * 
+ * @param {json} response
+ * @returns {void}
+ */
+function showAlert(response) {
+
+    $('.ajax-alert-title').html(response.title);
+    $('.ajax-alert-text').html(response.text);
+
+    switch (response.type) {
+        case 'success' :
+            console.log('success');
+            $('.ajax-alert-success').show();
+            break;
+        case 'info' :
+            console.log('info');
+            $('.ajax-alert-info').show();
+            break;
+        case 'warning' :
+            $('.ajax-alert-wanring').show();
+            break;
+        case 'danger' :
+            $('.ajax-alert-danger').show();
+            break;
+    }
 }
 
 function goto(destination) {

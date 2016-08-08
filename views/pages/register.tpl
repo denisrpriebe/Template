@@ -50,7 +50,7 @@
                             stringLength: {
                                 min: 5,
                                 max: 30,
-                                message: 'Your password must be more than 5 and less than 30 characters long.'
+                                message: 'Your password must be more than 5 characters.'
                             }
                         }
                     }
@@ -90,7 +90,7 @@
                             <span class="input-group-addon" id="emailAddon">
                                 <span class="glyphicon glyphicon-user"></span>
                             </span>
-                            <input id="loginEmail" name="email" type="email" class="form-control" placeholder="Email" aria-describedby="usernameAddon" required>
+                            <input id="loginEmail" name="email" type="email" class="form-control" placeholder="Email" aria-describedby="emailAddon" required>
                         </div>
                     </div>
                     <div class="form-group">

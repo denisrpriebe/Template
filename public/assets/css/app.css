@@ -23,6 +23,9 @@
     -moz-box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
     box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
 }
+.modal-footer {
+    text-align: center;
+}
 
 /*
  |--------------------------------------------------------------------------
@@ -57,4 +60,20 @@
 .forgot-password {
     padding: 5px 0px 0px 0px;
     margin-bottom: -5px;
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Authenticated Pages
+ |--------------------------------------------------------------------------
+ |
+ | Any styles that need to be applied after a user is logged in can be
+ | added here.
+ |
+*/
+.ajax-alert {
+    display: none;
+}
+.clear-nav {
+    margin-top: 70px;
 }

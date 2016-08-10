@@ -4,10 +4,11 @@
 
 <[block name="page-script"]>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
+
 
             /**
-             * Login Form Validation
+             * Reset Password Form Validation
              *
              */
             $('#resetPasswordForm').formValidation({
@@ -41,14 +42,12 @@
                         }
                     }
                 }
-            }).on('success.form.fv', function (e) {
+            }).on('success.form.fv', function(e) {
                 $('#sendEmailBtn').addClass('m-progress');
-            }).on('error.form.fv', function (e) {
-                console.log('Form is bad');
             });
 
-        });
 
+        });
     </script>
 <[/block]>
 
@@ -91,7 +90,7 @@
 
             </div>
             <div class="panel-footer text-muted text-center text-x-small">
-                <div>&copy; <[date('Y')]> Application Name</div>
+                <div>&copy; <[date('Y')]> <[Config::application('name')]></div>
             </div>
         </div>
     </div>

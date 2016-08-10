@@ -2,13 +2,15 @@
 
 require_once '../../app/start.php';
 
-use App\Facades\Input;
+use App\Facades\Components\Input;
 use App\Facades\Models\User;
-use App\Facades\Crypto;
-use App\Facades\Auth;
-use App\Facades\Session;
-use App\Facades\Redirect;
+use App\Facades\Components\Crypto;
+use App\Facades\Components\Auth;
+use App\Facades\Components\Session;
+use App\Facades\Components\Redirect;
 use Carbon\Carbon;
+
+Auth::guard();
 
 $userUpdated = false;
 $newPassword = (Input::post('password') != '__USE_EXISTING__') ? Crypto::hash(Input::post('password')) : false;
@@ -52,4 +54,4 @@ if ($userUpdated) {
     
 }
 
-Redirect::to('/auth/home.php');
+Redirect::referrer();

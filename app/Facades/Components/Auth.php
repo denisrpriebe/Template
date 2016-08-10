@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Facades;
+namespace App\Facades\Components;
 
 class Auth {
 
@@ -19,5 +19,13 @@ class Auth {
     public static function guard() {
         $GLOBALS['_authentication']->guard();
     }
-
+    
+    public static function post() {
+        $GLOBALS['_authentication']->post();
+    }
+    
+    public static function get() {
+        $GLOBALS['_authentication']->get();
+    }
+    
 }

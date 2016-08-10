@@ -15,7 +15,7 @@ return array(
     'name' => 'your_session_name',
     
     /**
-     * The number of milliseconds before session timeout.
+     * The number of seconds before session timeout.
      * 
      */
     'timeout' => 300

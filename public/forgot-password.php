@@ -2,6 +2,6 @@
 
 require_once '../app/start.php';
 
-use App\Facades\View;
+use App\Facades\Components\View;
 
 View::show('pages/forgot-password');

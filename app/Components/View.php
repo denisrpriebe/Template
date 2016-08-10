@@ -2,12 +2,13 @@
 
 namespace App\Components;
 
-use App\Contracts\ComponentContract;
+use App\Components\Configuration;
+
 
 /**
  *
  */
-class View extends \Smarty implements ComponentContract {
+class View extends \Smarty {
 
     /**
      * The views directory.
@@ -29,16 +30,17 @@ class View extends \Smarty implements ComponentContract {
      * @param type $views
      * @param type $assets
      */
-    public function __construct(array $settings) {
+    public function __construct(Configuration $configuration) {
 
         parent::__construct();
 
-        $this->setCompileDir('./compiled_views');
+        $this->setCompileDir('./_compiled-views');
+        
         $this->left_delimiter = "<[";
         $this->right_delimiter = "]>";
 
-        $this->views = $settings['views'];
-        $this->assets = $settings['assets'];
+        $this->views = $configuration->paths('views');
+        $this->assets = $configuration->paths('assets');
     }    
 
     /**

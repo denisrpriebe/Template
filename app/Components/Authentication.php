@@ -2,55 +2,109 @@
 
 namespace App\Components;
 
-use App\Contracts\ComponentContract;
-use App\Facades\Models\User;
-use App\Facades\Session as Sess;
-use App\Facades\Redirect;
+use App\Models\User;
+use App\Components\Configuration;
+use App\Components\Session;
+use App\Components\Input;
+use App\Components\Redirect;
 
-class Authentication implements ComponentContract {
+class Authentication {
 
     protected $name;
     protected $password;
     protected $guardRedirect;
+    protected $session;
+    protected $user;
+    protected $input;
+    protected $redirect;
 
-    public function __construct(array $settings) {
-        $this->name = $settings['name'];
-        $this->password = $settings['password'];
-        $this->guardRedirect = $settings['guard-redirect'];
+    public function __construct(Configuration $configuration, Session $session, Input $input, Redirect $redirect, User $user) {
+
+        $this->name = $configuration->authentication('name');
+        $this->password = $configuration->authentication('password');
+        $this->guardRedirect = $configuration->authentication('guard-redirect');
+
+        $this->session = $session;
+        $this->input = $input;
+        $this->redirect = $redirect;
+
+        $this->user = $user;
     }
 
+    /**
+     * 
+     * @param array $credentials
+     * @return type
+     */
     public function check(array $credentials) {
 
-        $user = User::where(array(
-                    array($this->name, '=', $credentials[$this->name]),
-                    array($this->password, '=', $credentials[$this->password])
+        $user = $this->user->where(array(
+            array($this->name, '=', $credentials[$this->name]),
+            array($this->password, '=', $credentials[$this->password])
         ));
 
         if ($user) {
-            Sess::store('_authUserId', $user->id);
+            $this->session->store('_authUserId', $user->id);
         }
 
         return $user ? true : false;
     }
 
+    /**
+     * 
+     * @return type
+     */
     public function user() {
-        return User::find(Sess::get('_authUserId'));
+        return $this->user->find($this->session->get('_authUserId'));
     }
 
+    /**
+     * 
+     */
     public function logout() {
-        Sess::remove('_authUserId');
+        $this->session->remove('_authUserId');
+        $this->session->remove('_history');
     }
 
+    /**
+     * 
+     */
     public function guard() {
-        if (!Sess::has('_authUserId')) {
+        if (!$this->session->has('_authUserId')) {
 
-            Sess::flash('alert', array(
+            $this->session->flash('alert', array(
                 'type' => 'warning',
                 'title' => 'Authentication Required',
                 'text' => 'You must be logged in to access this system.'
             ));
 
-            Redirect::to($this->guardRedirect);
+            $this->redirect->to($this->guardRedirect);
+        }
+    }
+
+    public function post() {
+        if ($this->input->method() != 'POST') {
+
+            $this->session->flash('alert', array(
+                'type' => 'warning',
+                'title' => 'Bad Method',
+                'text' => 'You cannot access that page like this.'
+            ));
+
+            $this->redirect->to($this->guardRedirect);
+        }
+    }
+
+    public function get() {
+        if ($this->input->method() != 'GET') {
+
+            $this->session->flash('alert', array(
+                'type' => 'warning',
+                'title' => 'Bad Method',
+                'text' => 'You cannot access that page like this.'
+            ));
+
+            $this->redirect->to($this->guardRedirect);
         }
     }
 

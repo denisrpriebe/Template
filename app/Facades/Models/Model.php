@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Facades;
+namespace App\Facades\Models;
 
 class Model {
 

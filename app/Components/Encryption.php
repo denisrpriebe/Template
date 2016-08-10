@@ -2,10 +2,10 @@
 
 namespace App\Components;
 
-use App\Contracts\ComponentContract;
+use App\Components\Configuration;
 use Carbon\Carbon;
 
-class Encryption implements ComponentContract {
+class Encryption {
 
     /**
      * The first layer of protection.
@@ -20,7 +20,7 @@ class Encryption implements ComponentContract {
      * @var string
      */
     protected $pepper;
-    
+
     /**
      * The third layer of protection.
      * 
@@ -33,10 +33,10 @@ class Encryption implements ComponentContract {
      *
      * @param type $settings
      */
-    public function __construct(array $settings) {
-        $this->salt = $settings['salt'];
-        $this->pepper = $settings['pepper'];
-        $this->cumin = $settings['cumin'];
+    public function __construct(Configuration $configuration) {
+        $this->salt = $configuration->encryption('salt');
+        $this->pepper = $configuration->encryption('pepper');
+        $this->cumin = $configuration->encryption('cumin');
     }
 
     /**
@@ -52,13 +52,13 @@ class Encryption implements ComponentContract {
     public function passwordResetToken() {
         return hash('sha512', Carbon::now()->toDateTimeString() . uniqid());
     }
-    
-    public function encrypt($value) {
 
+    public function encrypt($value) {
+        
     }
 
     public function decrypt($value) {
-
+        
     }
 
 }

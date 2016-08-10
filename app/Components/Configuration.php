@@ -2,9 +2,7 @@
 
 namespace App\Components;
 
-use App\Contracts\ComponentContract;
-
-class Configuration implements ComponentContract {
+class Configuration {
 
     protected $configurations;
 
@@ -38,6 +36,10 @@ class Configuration implements ComponentContract {
     
     public function navigation($name) {
         return $this->configurations['navigation'][$name];
+    }
+    
+    public function application($name) {
+        return $this->configurations['application'][$name];
     }
 
 }

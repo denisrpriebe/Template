@@ -51,7 +51,7 @@
                 }
             }
         }).on('success.form.fv', function(e) {
-            
+
             $('#updateUserSettingsBtn').addClass('m-progress');
 
         }).on('error.form.fv', function(e) {
@@ -72,10 +72,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Application Name</a>
+            <a class="navbar-brand" href="#"><[Config::application('name')]></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
+                <[assign var="nav" value=Nav::nav()]>
                 <[if isset($nav)]>
                     <[foreach from=$nav key=key item=settings]>
                         <[if isset($settings['children'])]>
@@ -92,14 +93,14 @@
                             </li>
                         <[else]>
                             <li class="<[if in_array($key, Nav::getActiveTabs())]>active<[/if]>"><a href="<[$settings['href']]>"><[$settings['icon']]> <[$settings['text']]></a></li>
-                            <[/if]>
-                        <[/foreach]>
-                    <[/if]>
+                        <[/if]>
+                    <[/foreach]>
+                <[/if]>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <span class="glyphicon glyphicon-user"></span> <[$user->first_name]> <[$user->last_name]>
+                        <span class="glyphicon glyphicon-user"></span> <[Auth::user()->first_name]> <[Auth::user()->last_name]>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -134,7 +135,7 @@
                             <span class="input-group-addon" id="emailAddon">
                                 <span class="glyphicon glyphicon-user"></span>
                             </span>
-                            <input value="<[$user->email]>" id="userSettingsEmail" name="email" type="email" class="form-control" placeholder="Email" aria-describedby="emailAddon" required>
+                            <input value="<[Auth::user()->email]>" id="userSettingsEmail" name="email" type="email" class="form-control" placeholder="Email" aria-describedby="emailAddon" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -143,7 +144,7 @@
                             <span class="input-group-addon" id="firstNameAddon">
                                 <span class="glyphicon glyphicon-user"></span>
                             </span>
-                            <input value="<[$user->first_name]>" id="userSettingsFirstName" name="first_name" type="text" class="form-control" placeholder="First Name" aria-describedby="firstNameAddon" required>
+                            <input value="<[Auth::user()->first_name]>" id="userSettingsFirstName" name="first_name" type="text" class="form-control" placeholder="First Name" aria-describedby="firstNameAddon" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -152,7 +153,7 @@
                             <span class="input-group-addon" id="lastNameAddon">
                                 <span class="glyphicon glyphicon-user"></span>
                             </span>
-                            <input value="<[$user->last_name]>" id="userSettingsLastName" name="last_name" type="text" class="form-control" placeholder="Last Name" aria-describedby="lastNameAddon" required>
+                            <input value="<[Auth::user()->last_name]>" id="userSettingsLastName" name="last_name" type="text" class="form-control" placeholder="Last Name" aria-describedby="lastNameAddon" required>
                         </div>
                     </div>
                     <div class="form-group">

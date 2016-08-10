@@ -16,7 +16,26 @@ $(document).ready(function() {
         $(this).addClass('m-progress');
     });
 
+    /**
+     * Close any alerts on the page after 5 seconds.
+     * 
+     * @returns {void}
+     */
+    setTimeout(function() {
+        $('.alert').alert('close');
+    }, 5000);
+
 });
+
+/**
+ * Redirects the page to the given location.
+ * 
+ * @param {string} destination
+ * @returns {void}
+ */
+function goto(destination) {
+    window.location.href = destination;
+}
 
 /**
  * Submits the given form via ajax.
@@ -32,14 +51,14 @@ function submitForm(form, callback) {
         data: form.serializeArray(),
         dataType: 'json',
         success: function(response, status, xhr) {
-            showAlert(response);
+            callback(response);
         },
         error: function(xhr, status, error) {
-            console.log('Error in the submitForm function:');
+            console.log('Ajax form submission error:');
             console.log(error);
         },
         complete: function(xhr, status) {
-            callback();
+            console.log('Ajax form submission complete.');
         }
     });
 }
@@ -71,8 +90,4 @@ function showAlert(response) {
             $('.ajax-alert-danger').show();
             break;
     }
-}
-
-function goto(destination) {
-    window.location.href = destination;
 }

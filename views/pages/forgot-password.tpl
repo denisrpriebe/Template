@@ -4,10 +4,11 @@
 
 <[block name="page-script"]>
     <script>
-        $(document).ready(function () {            
+        $(document).ready(function() {
+
 
             /**
-             * Login Form Validation
+             * Forgot Password Form Validation
              *
              */
             $('#forgotPasswordForm').formValidation({
@@ -29,14 +30,12 @@
                         }
                     }
                 }
-            }).on('success.form.fv', function (e) {
+            }).on('success.form.fv', function(e) {
                 $('#sendEmailBtn').addClass('m-progress');
-            }).on('error.form.fv', function (e) {
-                console.log('Form is bad');
             });
 
-        });
 
+        });
     </script>
 <[/block]>
 
@@ -50,7 +49,7 @@
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-question-sign"></span> Forgot Password
                 <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-primary btn-xs loading-button" onclick="goto('login.php', this);">
+                    <button type="button" class="btn btn-primary btn-xs loading-button" onclick="goto('login.php');">
                         <span class="glyphicon glyphicon-log-in"></span> Login
                     </button>
                 </div>
@@ -75,7 +74,7 @@
 
             </div>
             <div class="panel-footer text-muted text-center text-x-small">
-                <div>&copy; <[date('Y')]> Application Name</div>
+                <div>&copy; <[date('Y')]> <[Config::application('name')]></div>
             </div>
         </div>
     </div>

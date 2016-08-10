@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Facades\DB;
+use App\Components\Database;
 
 abstract class Model {
 
@@ -19,6 +19,16 @@ abstract class Model {
      * @var string
      */
     protected $tableName;
+    protected $database;
+    protected $queryResult;
+
+    public function __construct(Database $database) {
+        $this->database = $database;
+    }
+
+    public function __get($name) {
+        return $this->queryResult->$name;
+    }
 
     /**
      * Finds and returns a model by the given id.
@@ -28,7 +38,7 @@ abstract class Model {
      */
     public function find($id) {
         $sql = 'SELECT * FROM ' . $this->tableName . ' WHERE ' . $this->primaryKey . ' = ' . $id;
-        return DB::query($sql);
+        return $this->database->query($sql);
     }
 
     /**
@@ -43,12 +53,12 @@ abstract class Model {
 
         foreach ($modelData as $key => $value) {
             array_push($columnNames, $key);
-            array_push($columnValues, "'" . DB::clean($value) . "'");
+            array_push($columnValues, "'" . $this->database->clean($value) . "'");
         }
 
         $sql = 'INSERT INTO ' . $this->tableName . '(' . implode(', ', $columnNames) . ') VALUES (' . implode(', ', $columnValues) . ')';
 
-        return DB::insert($sql);
+        return $this->database->insert($sql);
     }
 
     /**
@@ -63,14 +73,14 @@ abstract class Model {
         $setArray = array();
 
         foreach ($modelData as $key => $value) {
-            array_push($setArray, $key . ' = ' . "'" . DB::clean($value) . "'");
+            array_push($setArray, $key . ' = ' . "'" . $this->database->clean($value) . "'");
         }
 
         $set = implode(', ', $setArray);
 
-        $sql = 'UPDATE ' . $this->tableName . ' SET ' . $set . ' WHERE ' . $this->primaryKey . ' = ' . "'" . DB::clean($id) . "'";
+        $sql = 'UPDATE ' . $this->tableName . ' SET ' . $set . ' WHERE ' . $this->primaryKey . ' = ' . "'" . $this->database->clean($id) . "'";
 
-        return DB::update($sql);
+        return $this->database->update($sql);
     }
 
     /**
@@ -80,7 +90,7 @@ abstract class Model {
      */
     public function all() {
         $sql = 'SELECT * FROM ' . $this->tableName;
-        return DB::query($sql);
+        return $this->database->query($sql);
     }
 
     /**
@@ -93,14 +103,14 @@ abstract class Model {
         $conditionsArray = array();
 
         foreach ($conditions as $condition) {
-            $condition[2] = "'" . DB::clean($condition[2]) . "'";
+            $condition[2] = "'" . $this->database->clean($condition[2]) . "'";
             array_push($conditionsArray, implode(' ', $condition));
         }
 
         $where = implode(' AND ', $conditionsArray);
 
         $sql = 'SELECT * FROM ' . $this->tableName . ' WHERE ' . $where;
-        return DB::query($sql);
+        return $this->database->query($sql);
     }
 
     /**
@@ -110,7 +120,7 @@ abstract class Model {
      */
     public function truncate() {
         $sql = 'TRUNCATE ' . $this->tableName . '';
-        return DB::update($sql);
+        return $this->database->update($sql);
     }
 
     /**
@@ -133,7 +143,7 @@ abstract class Model {
      * @return array
      */
     private function getTableInfo() {
-        return DB::query('DESCRIBE ' . $this->tableName);
+        return $this->database->query('DESCRIBE ' . $this->tableName);
     }
 
 }

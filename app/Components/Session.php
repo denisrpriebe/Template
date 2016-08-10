@@ -2,39 +2,54 @@
 
 namespace App\Components;
 
-use App\Contracts\ComponentContract;
+use App\Components\Configuration;
+use App\Components\Input;
 
-class Session implements ComponentContract {
+class Session {
+
+    protected $pageMethod;
 
     /**
      * Creates an instance of the session.
      *
      * @param array $settings
      */
-    public function __construct(array $settings) {
+    public function __construct(Configuration $configuration, Input $input) {
 
-        session_name($settings['name']);
+        session_name($configuration->session('name'));
         session_start();
 
+        // How the current page was accessed. (GET/POST)
+        $this->pageMethod = $input->method();
+
+        $this->checkFingerprint();
+
+        $this->checkFlash();
+
+        $this->updateHistory();
+    }
+
+    private function checkFingerprint() {
+
         // Make sure we have a fingerprint set
-        if (!isset($_SESSION['_fingerprint'])) {
+        if (!$this->has('_fingerprint')) {
             session_regenerate_id(true);
             $this->setFingerprint();
         }
 
-        if ($_SESSION['_fingerprint']['ip'] !== filter_input(INPUT_SERVER, 'REMOTE_ADDR')) {
+        $fingerprint = $this->get('_fingerprint');
+
+        if ($fingerprint['ip'] !== filter_input(INPUT_SERVER, 'REMOTE_ADDR')) {
             session_regenerate_id(true);
             $this->destroyData();
             $this->setFingerprint();
         }
 
-        // Regenerate session ID every five minutes:
-        if ($_SESSION['_fingerprint']['birth'] < (time() - 300)) {
+        // Regenerate session ID every five minutes
+        if ($fingerprint['birth'] < (time() - 300)) {
             session_regenerate_id(true);
-            $_SESSION['_fingerprint']['birth'] = time();
+            $fingerprint['birth'] = time();
         }
-
-        $this->checkFlash();
     }
 
     /**
@@ -42,10 +57,10 @@ class Session implements ComponentContract {
      * 
      */
     private function setFingerprint() {
-        $_SESSION['_fingerprint'] = array(
+        $this->store('_fingerprint', array(
             'birth' => time(),
             'ip' => filter_input(INPUT_SERVER, 'REMOTE_ADDR')
-        );
+        ));
     }
 
     /**
@@ -121,16 +136,41 @@ class Session implements ComponentContract {
     }
 
     private function checkFlash() {
-        $flash = $this->get('_flash');
-        if ($flash) {
-            if ($flash['time'] < 1) {
-                $flash['time'] ++;
-                $this->store('_flash', $flash);
-            } else {
-                $this->remove($flash['name']);
-                $this->remove('_flash');
+        if ($this->pageMethod == 'GET') {
+            $flash = $this->get('_flash');
+            if ($flash) {
+                if ($flash['time'] < 1) {
+                    $flash['time'] ++;
+                    $this->store('_flash', $flash);
+                } else {
+                    $this->remove($flash['name']);
+                    $this->remove('_flash');
+                }
             }
         }
+    }
+
+    /**
+     * 
+     */
+    private function updateHistory() {
+        if ($this->pageMethod == 'GET') {
+            $page = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+            if ($this->has('_history')) {
+
+                $history = $this->get('_history');
+                array_push($history, $page);
+                $this->store('_history', $history);
+            } else {
+                $this->store('_history', array($page));
+            }
+        }
+    }
+
+    public function previousPage() {
+        $history = $this->get('_history');
+        return end($history);
     }
 
 }

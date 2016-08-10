@@ -2,7 +2,7 @@
 
 namespace App\Facades\Models;
 
-use App\Facades\Model;
+use App\Facades\Models\Model;
 
 class Role extends Model {
     

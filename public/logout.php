@@ -2,9 +2,9 @@
 
 require_once '../app/start.php';
 
-use App\Facades\Auth;
-use App\Facades\Redirect;
-use App\Facades\Session;
+use App\Facades\Components\Auth;
+use App\Facades\Components\Redirect;
+use App\Facades\Components\Session;
 
 Auth::logout();
 

@@ -2,18 +2,7 @@
 
 namespace App\Components;
 
-use App\Contracts\ComponentContract;
-
-class Input implements ComponentContract {
-
-    /**
-     * Creates an instance of the input.
-     * 
-     * @param array $settings
-     */
-    public function __construct(array $settings = null) {
-        ;
-    }
+class Input {
 
     /**
      * Returns a GET value by the given name.

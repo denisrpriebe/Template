@@ -2,10 +2,10 @@
 
 namespace App\Components;
 
+use App\Components\Configuration;
 use PHPMailer;
-use App\Contracts\ComponentContract;
 
-class Mail extends PHPMailer implements ComponentContract {
+class Mail extends PHPMailer {
 
     protected $host;
     protected $username;
@@ -13,14 +13,17 @@ class Mail extends PHPMailer implements ComponentContract {
     protected $encryption;
     protected $port;
 
-    public function __construct(array $settings) {
+    public function __construct(Configuration $configuration) {
+        
+        parent::__construct();
+        
         $this->isSMTP();
         $this->SMTPAuth = true;
-        $this->Host = $settings['host'];
-        $this->Username = $settings['username'];
-        $this->Password = $settings['password'];
-        $this->SMTPSecure = $settings['encryption'];
-        $this->Port = $settings['port'];
+        $this->Host = $configuration->mail('host');
+        $this->Username = $configuration->mail('username');
+        $this->Password = $configuration->mail('password');
+        $this->SMTPSecure = $configuration->mail('encryption');
+        $this->Port = $configuration->mail('port');
     }
     
     public function sendEmail(array $email) {

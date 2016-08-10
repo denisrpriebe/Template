@@ -4,7 +4,8 @@
 
 <[block name="page-script"]>
     <script>
-        $(document).ready(function() {           
+        $(document).ready(function() {
+
 
             /**
              * Registration Form Validation
@@ -57,8 +58,6 @@
                 }
             }).on('success.form.fv', function(e) {
                 $('#registerBtn').addClass('m-progress');
-            }).on('error.form.fv', function(e) {
-                console.log('Form is bad');
             });
 
 
@@ -76,7 +75,7 @@
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-plus-sign"></span> Register
                 <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-primary btn-xs loading-button" onclick="goto('login.php', this)">
+                    <button type="button" class="btn btn-primary btn-xs loading-button" onclick="goto('login.php')">
                         <span class="glyphicon glyphicon-log-in"></span> Login
                     </button>
                 </div>
@@ -127,7 +126,7 @@
 
             </div>
             <div class="panel-footer text-muted text-center text-x-small">
-                <div>&copy; <[date('Y')]> Application Name</div>
+                <div>&copy; <[date('Y')]> <[Config::application('name')]></div>
             </div>
         </div>
     </div>

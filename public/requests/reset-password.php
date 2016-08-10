@@ -2,11 +2,11 @@
 
 require_once '../../app/start.php';
 
-use App\Facades\Input;
+use App\Facades\Components\Input;
 use App\Facades\Models\User;
-use App\Facades\Crypto;
-use App\Facades\Session;
-use App\Facades\Redirect;
+use App\Facades\Components\Crypto;
+use App\Facades\Components\Session;
+use App\Facades\Components\Redirect;
 use Carbon\Carbon;
 
 $user = User::where(array(

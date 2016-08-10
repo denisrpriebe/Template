@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Facades;
+namespace App\Facades\Components;
 
 /**
  * 
@@ -45,7 +45,7 @@ class Session {
     public static function has($name) {
         return $GLOBALS['_session']->has($name);
     }
-    
+
     /**
      * Destory the current session and all of its data.
      * 
@@ -62,6 +62,10 @@ class Session {
      */
     public static function flash($name, $object) {
         $GLOBALS['_session']->flash($name, $object);
+    }
+
+    public static function previousPage() {
+        return $GLOBALS['_session']->previousPage();
     }
 
 }

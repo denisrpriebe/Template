@@ -2,9 +2,9 @@
 
 namespace App\Components;
 
-use App\Contracts\ComponentContract;
+use App\Components\Configuration;
 
-class Database extends \mysqli implements ComponentContract {
+class Database extends \mysqli {
 
     protected $sqlString = '';
 
@@ -14,8 +14,8 @@ class Database extends \mysqli implements ComponentContract {
      *
      * @param array $settings
      */
-    public function __construct(array $settings) {
-        $this->connect($settings['host'], $settings['username'], $settings['password'], $settings['dbname']);
+    public function __construct(Configuration $configuration) {
+        $this->connect($configuration->database('host'), $configuration->database('username'), $configuration->database('password'), $configuration->database('dbname'));
     }
 
     /**

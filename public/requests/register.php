@@ -2,12 +2,15 @@
 
 require_once '../../app/start.php';
 
-use App\Facades\Input;
-use App\Facades\Redirect;
-use App\Facades\Crypto;
-use App\Facades\Session;
+use App\Facades\Components\Input;
+use App\Facades\Components\Redirect;
+use App\Facades\Components\Crypto;
+use App\Facades\Components\Session;
 use App\Facades\Models\User;
+use App\Facades\Components\Auth;
 use Carbon\Carbon;
+
+Auth::post();
 
 User::save(array(    
     'email' => Input::post('email'),

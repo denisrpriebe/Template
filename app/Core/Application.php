@@ -2,27 +2,15 @@
 
 namespace App\Core;
 
-use App\Contracts\ComponentContract;
+use App\Models\Model;
 
 class Application {
 
-    /**
-     * Registers a component with the application.
-     * 
-     * @param \App\Contracts\ComponentContract $component
-     * @param string $name
-     */
-    public function addComponent(ComponentContract $component, $name) {
+    public function addComponent($component, $name) {
         $GLOBALS[$name] = $component;
     }
-    
-    /**
-     * Registers a model with the application.
-     * 
-     * @param type $model
-     * @param string $name
-     */
-    public function addModel($model, $name) {
+
+    public function addModel(Model $model, $name) {
         $GLOBALS[$name] = $model;
     }
 

@@ -71,6 +71,9 @@
  | added here.
  |
 */
+.login-btn-home {
+    margin: 30px 0px 15px 0px;
+}
 .ajax-alert {
     display: none;
 }

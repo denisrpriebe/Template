@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Facades;
+namespace App\Facades\Components;
 
 class Config {
 
@@ -30,6 +30,10 @@ class Config {
     
     public static function navigation($name) {
         return $GLOBALS['_configuration']->navigation($name);
+    }
+    
+    public static function application($name) {
+        return $GLOBALS['_configuration']->application($name);
     }
 
 }

@@ -2,15 +2,15 @@
 
 namespace App\Components;
 
-use App\Contracts\ComponentContract;
+use App\Components\Configuration;
 
-class Navigation implements ComponentContract {
+class Navigation {
 
     protected $nav;
     protected $activeTabs;
 
-    public function __construct(array $settings) {
-        $this->nav = $settings;
+    public function __construct(Configuration $configuration) {
+        $this->nav = $configuration->navigation('nav');
     }
 
     public function nav() {

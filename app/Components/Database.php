@@ -43,11 +43,11 @@ class Database extends \mysqli {
         return $data;
     }
 
-    public function insert($sql) {
+    public function insertQuery($sql) {
         return parent::query($sql);
     }
 
-    public function update($sql) {
+    public function updateQuery($sql) {
         return parent::query($sql);
     }
 
@@ -58,13 +58,31 @@ class Database extends \mysqli {
      * @return string
      */
     public function clean($value) {
-        return $this->real_escape_string($value);
+        return "'" . $this->real_escape_string($value) . "'";
     }
+    
+    
+    
     
     public function select($sql) {
         $this->sqlString .= 'SELECT ' . $sql . ' ';
         return $this;
     }
+    
+    public function delete($sql = '') {
+        $this->sqlString .= 'DELETE ' . $sql . ' ';
+        return $this;
+    }
+    
+    public function insert($sql) {
+        $this->sqlString .= 'INSERT INTO ' . $sql . ' ';
+        return $this;
+    }
+            
+    public function values($sql) {
+        $this->sqlString .= 'VALUES (' . $sql . ') ';
+        return $this;
+    }    
     
     public function from($sql) {
         $this->sqlString .= 'FROM ' . $sql . ' ';
@@ -78,6 +96,16 @@ class Database extends \mysqli {
     
     public function on($sql) {
         $this->sqlString .= 'ON ' . $sql . ' ';
+        return $this;
+    }
+    
+    public function where($sql) {
+        $this->sqlString .= 'WHERE ' . $sql . ' ';
+        return $this;
+    }
+    
+    public function also($sql = '') {
+        $this->sqlString .= 'AND ' . $sql . ' ';
         return $this;
     }
     

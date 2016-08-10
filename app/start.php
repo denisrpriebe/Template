@@ -15,8 +15,10 @@ use App\Components\Mail as MailComponent;
 use App\Components\Redirect as RedirectComponent;
 use App\Components\View as ViewComponent;
 use App\Components\Navigation as NavigationComponent;
+
 use App\Models\User as UserModel;
 use App\Models\Role as RoleModel;
+use App\Models\UserRole as UserRoleModel;
 
 // Initialize the application
 $application = new App\Core\Application();
@@ -37,6 +39,7 @@ $database = new DatabaseComponent($configuration);
 
 $user = new UserModel($database);
 $role = new RoleModel($database);
+$userRole = new UserRoleModel($database);
 
 $input = new InputComponent();
 $encryption = new EncryptionComponent($configuration);
@@ -66,3 +69,4 @@ $application->addComponent($view, '_view');
 
 $application->addModel($user, '_user');
 $application->addModel($role, '_role');
+$application->addModel($userRole, '_userrole');

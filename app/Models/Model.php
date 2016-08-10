@@ -38,7 +38,13 @@ abstract class Model {
      */
     public function find($id) {
         $sql = 'SELECT * FROM ' . $this->tableName . ' WHERE ' . $this->primaryKey . ' = ' . $id;
-        return $this->database->query($sql);
+        $this->queryResult = $this->database->query($sql);
+        if ($this->queryResult) {
+            return $this;
+        } else {
+            return $this->queryResult;
+        }
+        
     }
 
     /**
@@ -53,12 +59,12 @@ abstract class Model {
 
         foreach ($modelData as $key => $value) {
             array_push($columnNames, $key);
-            array_push($columnValues, "'" . $this->database->clean($value) . "'");
+            array_push($columnValues, $this->database->clean($value));
         }
 
         $sql = 'INSERT INTO ' . $this->tableName . '(' . implode(', ', $columnNames) . ') VALUES (' . implode(', ', $columnValues) . ')';
 
-        return $this->database->insert($sql);
+        return $this->database->insertQuery($sql);
     }
 
     /**
@@ -73,14 +79,14 @@ abstract class Model {
         $setArray = array();
 
         foreach ($modelData as $key => $value) {
-            array_push($setArray, $key . ' = ' . "'" . $this->database->clean($value) . "'");
+            array_push($setArray, $key . ' = ' . $this->database->clean($value));
         }
 
         $set = implode(', ', $setArray);
 
-        $sql = 'UPDATE ' . $this->tableName . ' SET ' . $set . ' WHERE ' . $this->primaryKey . ' = ' . "'" . $this->database->clean($id) . "'";
+        $sql = 'UPDATE ' . $this->tableName . ' SET ' . $set . ' WHERE ' . $this->primaryKey . ' = ' . $this->database->clean($id);
 
-        return $this->database->update($sql);
+        return $this->database->updateQuery($sql);
     }
 
     /**
@@ -103,14 +109,20 @@ abstract class Model {
         $conditionsArray = array();
 
         foreach ($conditions as $condition) {
-            $condition[2] = "'" . $this->database->clean($condition[2]) . "'";
+            $condition[2] = $this->database->clean($condition[2]);
             array_push($conditionsArray, implode(' ', $condition));
         }
 
         $where = implode(' AND ', $conditionsArray);
 
-        $sql = 'SELECT * FROM ' . $this->tableName . ' WHERE ' . $where;
-        return $this->database->query($sql);
+        $sql = 'SELECT * FROM ' . $this->tableName . ' WHERE ' . $where;        
+        
+        $this->queryResult = $this->database->query($sql);
+        if ($this->queryResult) {
+            return $this;
+        } else {
+            return $this->queryResult;
+        }
     }
 
     /**
@@ -144,6 +156,34 @@ abstract class Model {
      */
     private function getTableInfo() {
         return $this->database->query('DESCRIBE ' . $this->tableName);
+    }
+    
+    protected function hasMany($model, $foreignKey) {        
+        return $model::where(array(
+            array($foreignKey, '=', $this->id)
+        ));
+    }
+    
+    protected function hasManyPivot($pivot, $pivotKey, $hasManyModel, $modelKey) {
+        
+        $pivotTable = new $pivot($this->database);        
+        
+        $pivotRows = $pivotTable->where(array(
+            array($pivotKey, '=', $this->id)
+        ));
+        
+        $need = array();
+        
+        foreach ($pivotRows->queryResult as $pivotRow) {
+            $hasManyObject = new $hasManyModel($this->database);
+            $newRows = $hasManyObject->where(array(
+                array($hasManyObject->primaryKey, '=', $pivotRow->$modelKey)
+            ));
+            array_push($need, $newRows);
+        }
+        
+        return $need;
+        
     }
 
 }

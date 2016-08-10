@@ -18,6 +18,18 @@
     box-shadow: 0 6px 15px -4px rgba(0,0,0,.375);
 
 }
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    padding: 0px 22px 0px 0px;
+}
+.navbar-brand > img {
+    padding: 7px 10px;
+    width: 50px;
+}
+.navbar-brand {
+    padding-left: 8px;
+}
 .alert {
     -webkit-box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
     -moz-box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);

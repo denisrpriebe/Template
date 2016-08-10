@@ -116,8 +116,8 @@
                     
                 <[/if]>
             </div>
-            <div class="panel-footer text-muted text-center text-x-small">
-                <div>&copy; <[date('Y')]> <[Config::application('name')]></div>
+            <div class="panel-footer text-muted text-center text-x-small">                
+                &copy; <[date('Y')]> <[Config::application('name')]>
             </div>
         </div>
     </div>

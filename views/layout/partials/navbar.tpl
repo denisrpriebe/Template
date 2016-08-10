@@ -72,7 +72,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><[Config::application('name')]></a>
+            <a class="navbar-brand" href="#">
+                <img src="<[View::asset('images/icon.png')]>" />
+                <[Config::application('name')]>
+            </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -93,9 +96,9 @@
                             </li>
                         <[else]>
                             <li class="<[if in_array($key, Nav::getActiveTabs())]>active<[/if]>"><a href="<[$settings['href']]>"><[$settings['icon']]> <[$settings['text']]></a></li>
-                        <[/if]>
-                    <[/foreach]>
-                <[/if]>
+                            <[/if]>
+                        <[/foreach]>
+                    <[/if]>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">

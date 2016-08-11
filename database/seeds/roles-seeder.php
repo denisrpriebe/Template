@@ -2,14 +2,12 @@
 
 require_once '../../app/start.php';
 
-use App\Facades\Models\Role;
+use App\Models\Role;
 
-Role::save(array(
-    'id' => '1',
+Role::create(array(
     'role' => 'Administrator'
 ));
 
-Role::save(array(
-    'id' => '2',
+Role::create(array(
     'role' => 'Default'
 ));

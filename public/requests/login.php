@@ -8,6 +8,8 @@ use App\Facades\Components\Crypto;
 use App\Facades\Components\Redirect;
 use App\Facades\Components\Session;
 
+Auth::post();
+
 $credentials = array(
     'email' => Input::post('email'),
     'password' => Crypto::hash(Input::post('password'))

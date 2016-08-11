@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model {
 
-    /**
-     * The table this model represents.
-     * 
-     * @var type 
-     */
-    protected $tableName = 'roles';
+    protected $table = 'roles';
+    protected $fillable = array(
+        'role'
+    );
 
 }

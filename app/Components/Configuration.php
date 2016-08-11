@@ -4,8 +4,18 @@ namespace App\Components;
 
 class Configuration {
 
+    /**
+     * An array of file configurations.
+     * 
+     * @var array 
+     */
     protected $configurations;
 
+    /**
+     * Initialize a new instance of our configuration.
+     * 
+     * @param array $configurations
+     */
     public function __construct(array $configurations) {
         $this->configurations = $configurations;
     }

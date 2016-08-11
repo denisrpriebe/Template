@@ -6,16 +6,20 @@ use App\Facades\Components\Input;
 use App\Facades\Components\Redirect;
 use App\Facades\Components\Crypto;
 use App\Facades\Components\Session;
-use App\Facades\Models\User;
+use App\Models\User;
 use App\Facades\Components\Mail;
 use App\Facades\Components\View;
+use App\Facades\Components\Auth;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Carbon\Carbon;
 
-$userFound = User::where(array(
-    array('email', '=', Input::post('email'))
-));
+Auth::post();
 
-if (!$userFound) {
+try {
+
+    $user = User::where('email', '=', Input::post('email'))->firstOrFail();
+    
+} catch (ModelNotFoundException $ex) {
 
     Session::flash('alert', array(
         'type' => 'danger',
@@ -26,14 +30,10 @@ if (!$userFound) {
     Redirect::to('/forgot-password.php');
 }
 
-User::update($userFound->id, array(
-    'password_reset_token' => Crypto::passwordResetToken(),
-    'password_reset_expires' => Carbon::now()->addMinutes(10)->toDateTimeString(),
-    'updated_on' => Carbon::now()->toDateTimeString()
-));
+$user->password_reset_token = Crypto::passwordResetToken();
+$user->password_reset_expires = Carbon::now()->addMinutes(10)->toDateTimeString();
 
-// Refresh the user after we made updates
-$user = User::find($userFound->id);
+$user->save();
 
 View::add('user', $user);
 
@@ -52,8 +52,9 @@ if ($emailSent) {
     ));
 
     Redirect::to('/login.php');
-} else {
     
+} else {
+
     Session::flash('alert', array(
         'type' => 'danger',
         'title' => 'Email Failure',
@@ -61,4 +62,5 @@ if ($emailSent) {
     ));
 
     Redirect::to('/login.php');
+    
 }

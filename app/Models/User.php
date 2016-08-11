@@ -2,20 +2,48 @@
 
 namespace App\Models;
 
-use App\Models\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Model {
 
     /**
-     * The table this model represents.
      *
-     * @var type
+     * @var type 
      */
-    protected $tableName = 'users';
-    
+    protected $table = 'users';
+
+    /**
+     *
+     * @var type 
+     */
+    protected $fillable = array(
+        'email', 'first_name', 'last_name', 'password', 'password_reset_token', 'password_reset_expires'
+    );
+
+    /**
+     * Returns all of the user's roles.
+     * 
+     * @return type
+     */
     public function roles() {
-        return $this->hasManyPivot('App\Models\UserRole', 'user_id', 'App\Models\Role', 'role_id');
+        return $this->belongsToMany('App\Models\Role', 'user_roles', 'user_id', 'role_id');
     }
-    
+
+    /**
+     * Checks if the user has the given role.
+     * 
+     * @param string $roleName
+     * @return boolean
+     */
+    public function hasRole($roleName) {
+        
+        foreach ($this->roles as $role) {
+            if (strtolower($roleName) == strtolower($role->role)) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
 
 }

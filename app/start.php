@@ -16,9 +16,7 @@ use App\Components\Redirect as RedirectComponent;
 use App\Components\View as ViewComponent;
 use App\Components\Navigation as NavigationComponent;
 
-use App\Models\User as UserModel;
-use App\Models\Role as RoleModel;
-use App\Models\UserRole as UserRoleModel;
+use App\Models\User;
 
 // Initialize the application
 $application = new App\Core\Application();
@@ -37,10 +35,6 @@ $configuration = new ConfigurationComponent(array(
 
 $database = new DatabaseComponent($configuration);
 
-$user = new UserModel($database);
-$role = new RoleModel($database);
-$userRole = new UserRoleModel($database);
-
 $input = new InputComponent();
 $encryption = new EncryptionComponent($configuration);
 $mail = new MailComponent($configuration);
@@ -48,7 +42,7 @@ $navigation = new NavigationComponent($configuration);
 $view = new ViewComponent($configuration);
 $session = new SessionComponent($configuration, $input);
 $redirect = new RedirectComponent($configuration, $session);
-$authentication = new AuthenticationComponent($configuration, $session, $input, $redirect, $user);
+$authentication = new AuthenticationComponent($configuration, $session, $input, $redirect, new User);
 
 $view->integrate('Config', 'App\Facades\Components\Config');
 $view->integrate('Session', 'App\Facades\Components\Session');
@@ -66,7 +60,3 @@ $application->addComponent($authentication, '_authentication');
 $application->addComponent($redirect, '_redirect');
 $application->addComponent($navigation, '_navigation');
 $application->addComponent($view, '_view');
-
-$application->addModel($user, '_user');
-$application->addModel($role, '_role');
-$application->addModel($userRole, '_userrole');

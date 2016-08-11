@@ -6,19 +6,23 @@ use App\Facades\Components\Input;
 use App\Facades\Components\Redirect;
 use App\Facades\Components\Crypto;
 use App\Facades\Components\Session;
-use App\Facades\Models\User;
 use App\Facades\Components\Auth;
-use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Role;
 
 Auth::post();
 
-User::save(array(    
-    'email' => Input::post('email'),
-    'first_name' => Input::post('first_name'),
-    'last_name' => Input::post('last_name'),
-    'password' => Crypto::hash(Input::post('password')),
-    'updated_on' => Carbon::now()->toDateTimeString()
-));
+$defaultRole = Role::where('role', '=', 'Default')->first();
+
+$user = new User;
+$user->email = Input::post('email');
+$user->first_name = Input::post('first_name');
+$user->last_name = Input::post('last_name');
+$user->password = Crypto::hash(Input::post('password'));
+$user->save();
+
+// assign the new user to the "default" group
+$user->roles()->save($defaultRole);
 
 Session::flash('alert', array(
     'type' => 'success',

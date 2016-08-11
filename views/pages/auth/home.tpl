@@ -21,21 +21,23 @@
 
         <div class="row">
 
-            <div class="col-md-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Administrator Group</div>
-                    <div class="panel-body">This panel should only be visible to Administrators.</div>
+            <[if Auth::user()->hasRole('Administrator')]>
+                <div class="col-md-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Administrator Group</div>
+                        <div class="panel-body">This panel should only be visible to Administrators.</div>
+                    </div>
                 </div>
-            </div>
+            <[/if]>
 
-
-            <div class="col-md-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Default Group</div>
-                    <div class="panel-body">This panel should only be visible to Default users.</div>
+            <[if Auth::user()->hasRole('Default')]>
+                <div class="col-md-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Default Group</div>
+                        <div class="panel-body">This panel should only be visible to Default users.</div>
+                    </div>
                 </div>
-            </div>
-
+            <[/if]>
 
             <div class="col-md-4">
                 <div class="panel panel-primary">
@@ -44,11 +46,9 @@
                 </div>
             </div>
 
-
         </div>
 
         <div class="row">
-
 
             <div class="col-md-6">
                 <div class="panel panel-primary">

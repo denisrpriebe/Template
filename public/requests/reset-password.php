@@ -3,18 +3,22 @@
 require_once '../../app/start.php';
 
 use App\Facades\Components\Input;
-use App\Facades\Models\User;
+use App\Models\User;
 use App\Facades\Components\Crypto;
 use App\Facades\Components\Session;
 use App\Facades\Components\Redirect;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Facades\Components\Auth;
 use Carbon\Carbon;
 
-$user = User::where(array(
-    array('password_reset_token', '=', Input::post('password_reset_token'))
-));
+Auth::post();
 
-// Check to see if the password reset token is valid
-if (!$user) {
+try {
+
+    $user = User::where('password_reset_token', '=', Input::post('password_reset_token'))
+            ->firstOrFail();
+    
+} catch (ModelNotFoundException $ex) {
 
     Session::flash('alert', array(
         'type' => 'danger',
@@ -28,9 +32,9 @@ if (!$user) {
 $passwordExpiresDateTime = Carbon::createFromTimestamp(strtotime($user->password_reset_expires));
 $now = Carbon::now();
 
-// The user waited to long to reset their password
+// Did the user wait too long to reset their password?
 if ($passwordExpiresDateTime->lt($now)) {
-    
+
     Session::flash('alert', array(
         'type' => 'warning',
         'title' => 'Password Reset Expired',
@@ -40,9 +44,8 @@ if ($passwordExpiresDateTime->lt($now)) {
     Redirect::to('/forgot-password.php');
 }
 
-User::update($user->id, array(
-    'password' => Crypto::hash(Input::post('password'))
-));
+$user->password = Crypto::hash(Input::post('password'));
+$user->save();
 
 Session::flash('alert', array(
     'type' => 'success',

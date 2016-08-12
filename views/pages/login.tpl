@@ -1,6 +1,6 @@
 <[extends file="../layout/app.tpl"]>
 
-<[block name="page-title"]>Application Name : : Login<[/block]>
+<[block name="page-title"]><[Config::application('name')]> : : Login<[/block]>
 
 <[block name="page-script"]>
     <script>
@@ -79,8 +79,8 @@
 
                     <h3 class="text-center">Hello <[Auth::user()->first_name]>.</h3>
 
-                    <button type="button" class="btn btn-primary btn-block login-btn-home loading-button" onclick="goto('auth/home.php')">
-                        <span class="glyphicon glyphicon-home"></span> Home
+                    <button type="button" class="btn btn-primary btn-block login-btn-home loading-button" onclick="goto('auth/dashboard.php')">
+                        <span class="glyphicon glyphicon-dashboard"></span> Dashboard
                     </button>
 
                     <button type="button" class="btn btn-default btn-block loading-button" onclick="goto('logout.php')">

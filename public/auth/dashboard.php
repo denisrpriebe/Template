@@ -9,7 +9,7 @@ use App\Facades\Components\Nav;
 Auth::guard();
 
 Nav::setActiveTabs(array(
-    'home'
+    'dashboard'
 ));
 
-View::show('pages/auth/home');
+View::show('pages/auth/dashboard');

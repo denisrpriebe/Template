@@ -17,7 +17,7 @@ $credentials = array(
 
 if (Auth::check($credentials)) {
     
-    Redirect::to('/auth/home.php');
+    Redirect::to('/auth/dashboard.php');
     
 } else {
     

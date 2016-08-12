@@ -7,10 +7,7 @@
  |
 */
 .panel {
-    background-color: rgba(255, 255, 255, .70);
-    -webkit-box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
-    -moz-box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
-    box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
+    background-color: rgba(255, 255, 255, .65);
 }
 .navbar {
     -webkit-box-shadow: 0 6px 15px -4px rgba(0,0,0,.375);
@@ -30,13 +27,16 @@
 .navbar-brand {
     padding-left: 8px;
 }
-.alert {
+.alert, .jumbotron, .panel {
     -webkit-box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
     -moz-box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
     box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
 }
 .modal-footer {
     text-align: center;
+}
+.jumbotron {
+    background-color: rgba(238, 238, 238, .65);
 }
 
 /*

@@ -1,6 +1,6 @@
 <[extends file="../layout/app.tpl"]>
 
-<[block name="page-title"]>Application Name : : Forgot Password<[/block]>
+<[block name="page-title"]><[Config::application('name')]> : : Forgot Password<[/block]>
 
 <[block name="page-script"]>
     <script>

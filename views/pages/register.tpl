@@ -1,6 +1,6 @@
 <[extends file="../layout/app.tpl"]>
 
-<[block name="page-title"]>Application Name : : Register<[/block]>
+<[block name="page-title"]><[Config::application('name')]> : : Register<[/block]>
 
 <[block name="page-script"]>
     <script>
@@ -20,12 +20,19 @@
                 },
                 fields: {
                     email: {
+                        verbose: false,
                         validators: {
                             notEmpty: {
                                 message: 'Please enter your email.'
                             },
                             emailAddress: {
                                 message: 'Please enter a valid email address.'
+                            },
+                            remote: {
+                                message: 'This email has already been registered.',
+                                url: './requests/check-email.php',
+                                type: 'POST',
+                                delay: 2000
                             }
                         }
                     },
@@ -51,7 +58,10 @@
                             stringLength: {
                                 min: 5,
                                 max: 30,
-                                message: 'Your password must be more than 5 characters.'
+                                message: 'Your password must be more than 5 characters.',
+                                success: function() {
+                                    
+                                }
                             }
                         }
                     }
@@ -71,7 +81,7 @@
 
         <[include file="../layout/partials/alerts.tpl"]>
 
-        <div class="login-box panel panel-primary panel-transparent">
+        <div class="panel panel-primary panel-transparent">
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-plus-sign"></span> Register
                 <div class="btn-group pull-right">

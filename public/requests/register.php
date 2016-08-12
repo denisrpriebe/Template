@@ -14,6 +14,18 @@ Auth::post();
 
 $defaultRole = Role::where('role', '=', 'Default')->first();
 
+// check if a user already exists with the same email
+if (User::where('email', '=', Input::post('email'))->first()) {
+
+    Session::flash('alert', array(
+        'type' => 'warning',
+        'title' => 'Email Account Exists',
+        'text' => 'An account with the email "' . Input::post('email') . '" already exists. Please login or register with a new email.'
+    ));
+
+    Redirect::to('/register.php');
+}
+
 $user = new User;
 $user->email = Input::post('email');
 $user->first_name = Input::post('first_name');

@@ -10,26 +10,26 @@ return array(
 
     'nav' => array(
 
-        'home' => array(
-            'text' => 'Home',
-            'icon' => '<span class="glyphicon glyphicon-home"></span>',
-            'href' => '../auth/home.php'
+        'dashboard' => array(
+            'text' => 'Dashboard',
+            'icon' => '<span class="glyphicon glyphicon-dashboard"></span>',
+            'href' => '../auth/dashboard.php'
         ),
 
-        'page1' => array(
-            'text' => 'Page1',
-            'icon' => '<span class="glyphicon glyphicon-envelope"></span>',
+        'apps' => array(
+            'text' => 'Apps',
+            'icon' => '<span class="glyphicon glyphicon-th-large"></span>',
             'href' => '#',
             'children' => array(
 
-                'link1' => array(
-                    'text' => 'Link1',
+                'word' => array(
+                    'text' => 'Word',
                     'icon' => '<span class="glyphicon glyphicon-search"></span>',
                     'href' => '../auth/link1.php'
                 ),
 
-                'link2' => array(
-                    'text' => 'Link2',
+                'excel' => array(
+                    'text' => 'Excel',
                     'icon' => '<span class="glyphicon glyphicon-print"></span>',
                     'href' => '../auth/link2.php'
                 )
@@ -37,9 +37,9 @@ return array(
             )
         ),
 
-        'page2' => array(
-            'text' => 'Page2',
-            'icon' => '<span class="glyphicon glyphicon-asterisk"></span>',
+        'inventory' => array(
+            'text' => 'Inventory',
+            'icon' => '<span class="glyphicon glyphicon-inbox"></span>',
             'href' => '../auth/page2.php'
         ),
 

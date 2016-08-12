@@ -15,11 +15,18 @@
             fields: {
                 email: {
                     validators: {
+                        verbose: false,
                         notEmpty: {
                             message: 'Please enter your email.'
                         },
                         emailAddress: {
                             message: 'Please enter a valid email address.'
+                        },
+                        remote: {
+                            message: 'This email has already been registered.',
+                            url: '../requests/check-email.php',
+                            type: 'POST',
+                            delay: 2000
                         }
                     }
                 },

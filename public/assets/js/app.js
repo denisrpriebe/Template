@@ -4,7 +4,7 @@ $(document).ready(function() {
      * Page Background
      * 
      */
-    $.backstretch('http://127.0.0.1/projects/Template/public/assets/images/background-blue-9.jpg');
+    $.backstretch('http://127.0.0.1/projects/Template/public/assets/images/background-blue-5.jpg');
 
     /**
      * Loading Button Effect
@@ -17,13 +17,13 @@ $(document).ready(function() {
     });
 
     /**
-     * Close any alerts on the page after 5 seconds.
+     * Close any alerts on the page after 7 seconds.
      * 
      * @returns {void}
      */
     setTimeout(function() {
         $('.alert').alert('close');
-    }, 5000);
+    }, 7000);
 
 });
 

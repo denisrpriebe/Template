@@ -5,3 +5,13 @@
 ![Required MySQL Version](https://img.shields.io/badge/MySQL-5.6.15-yellow.svg "Required MySQL Version")
 
 The Template project is my attempt at a MVC based framework to help me get projects off the ground faster.
+
+You may install Template with composer:
+
+    composer create-project denisrpriebe/template -s alpha
+    
+You should then run:
+
+    bower install
+    
+to install bootstrap, jquery and a few other nice libraries.

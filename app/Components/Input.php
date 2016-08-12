@@ -40,7 +40,12 @@ class Input {
      * @return type
      */
     public function method() {
-        return $_SERVER['REQUEST_METHOD'];
+        return filter_input(INPUT_SERVER, 'REQUEST_METHOD');
+    }
+    
+    public function url($part = null) {
+        $url = parse_url(filter_input(INPUT_SERVER, 'REQUEST_URI'));
+        return $part ? $url[$part] : $url;
     }
 
 }

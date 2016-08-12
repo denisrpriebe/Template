@@ -4,7 +4,7 @@
  * Navigation Configuration
  *
  * Navigation can be configured here. Each link/tab needs to have a text, icon
- * and href.
+ * and route-name.
  */
 return array(
 
@@ -13,25 +13,25 @@ return array(
         'dashboard' => array(
             'text' => 'Dashboard',
             'icon' => '<span class="glyphicon glyphicon-dashboard"></span>',
-            'href' => '../auth/dashboard.php'
+            'route-name' => 'auth-dashboard'
         ),
 
         'apps' => array(
             'text' => 'Apps',
             'icon' => '<span class="glyphicon glyphicon-th-large"></span>',
-            'href' => '#',
+            'route-name' => 'logout',
             'children' => array(
 
                 'word' => array(
                     'text' => 'Word',
                     'icon' => '<span class="glyphicon glyphicon-search"></span>',
-                    'href' => '../auth/link1.php'
+                    'route-name' => '../auth/link1.php'
                 ),
 
                 'excel' => array(
                     'text' => 'Excel',
                     'icon' => '<span class="glyphicon glyphicon-print"></span>',
-                    'href' => '../auth/link2.php'
+                    'route-name' => '../auth/link2.php'
                 )
 
             )
@@ -40,7 +40,7 @@ return array(
         'inventory' => array(
             'text' => 'Inventory',
             'icon' => '<span class="glyphicon glyphicon-inbox"></span>',
-            'href' => '../auth/page2.php'
+            'route-name' => '../auth/page2.php'
         ),
 
     )

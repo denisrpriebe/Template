@@ -91,18 +91,18 @@
                     <[foreach from=$nav key=key item=settings]>
                         <[if isset($settings['children'])]>
                             <li class="dropdown <[if in_array($key, Nav::getActiveTabs())]>active<[/if]>">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="<[$settings['href']]>"><[$settings['icon']]> <[$settings['text']]>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><[$settings['icon']]> <[$settings['text']]>
                                     <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <[foreach from=$settings['children'] key=childKey item=childSettings]>
                                         <li class="<[if in_array($childKey, Nav::getActiveTabs())]>active<[/if]>">
-                                            <a href="<[$childSettings['href']]>"><[$childSettings['icon']]> <[$childSettings['text']]></a>
+                                            <a href="<[Route::to($childSettings['route-name'])]>"><[$childSettings['icon']]> <[$childSettings['text']]></a>
                                         </li>
                                     <[/foreach]>
                                 </ul>
                             </li>
                         <[else]>
-                            <li class="<[if in_array($key, Nav::getActiveTabs())]>active<[/if]>"><a href="<[$settings['href']]>"><[$settings['icon']]> <[$settings['text']]></a></li>
+                            <li class="<[if in_array($key, Nav::getActiveTabs())]>active<[/if]>"><a href="<[Route::to($settings['route-name'])]>"><[$settings['icon']]> <[$settings['text']]></a></li>
                             <[/if]>
                         <[/foreach]>
                     <[/if]>
@@ -118,7 +118,7 @@
                             <a href="#" data-toggle="modal" data-target="#userSettingsModal"><span class="glyphicon glyphicon-cog"></span> Settings</a>
                         </li>
                         <li>
-                            <a href="../logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                            <a href="<[Route::to('logout')]>"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
                         </li>
                     </ul>
                 </li>

@@ -60,21 +60,21 @@
         <div class="login-box panel panel-primary panel-transparent">
             <div class="panel-heading">
                 <[if Auth::user()]>
-                    
+
                     <span class="glyphicon glyphicon-log-in"></span> Login
-                    
+
                 <[else]>
-                    
+
                     <span class="glyphicon glyphicon-log-in"></span> Login
                     <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-primary btn-xs loading-button" onclick="goto('register.php');">
+                        <a role="button" class="btn btn-primary btn-xs loading-button" href="<[Route::to('registration-page')]>">
                             <span class="glyphicon glyphicon-plus-sign"></span> Register
-                        </button>
+                        </a>
                     </div>
-                    
-                <[/if]>                
+
+                <[/if]>
             </div>
-            <div class="panel-body">
+            <div class="panel-body login-panel-body">
                 <[if Auth::user()]>
 
                     <h3 class="text-center">Hello <[Auth::user()->first_name]>.</h3>
@@ -89,7 +89,7 @@
 
                 <[else]>
 
-                    <form role="form" method="post" action="requests/login.php" id="loginForm">
+                    <form role="form" method="post" action="<[Route::to('do-login')]>" id="loginForm">
                         <div class="form-group">
                             <label for="loginEmail">Email:</label>
                             <div class="input-group">
@@ -111,12 +111,12 @@
                         <button id="loginBtn" type="submit" class="btn btn-primary btn-block">
                             <span class="glyphicon glyphicon-log-in"></span> Login
                         </button>
-                        <button type="button" class="btn btn-link btn-block forgot-password" onclick="goto('forgot-password.php');">Forgot Password?</button>
+                        <a role="button" class="btn btn-link btn-block forgot-password" href="<[Route::to('forgot-password-page')]>">Forgot Password?</button>
                     </form>
-                    
+
                 <[/if]>
             </div>
-            <div class="panel-footer text-muted text-center text-x-small">                
+            <div class="panel-footer text-muted text-center text-x-small">
                 &copy; <[date('Y')]> <[Config::application('name')]>
             </div>
         </div>

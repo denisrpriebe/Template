@@ -51,5 +51,9 @@ class Configuration {
     public function application($name) {
         return $this->configurations['application'][$name];
     }
+    
+    public function routes() {
+        return $this->configurations['routes'];
+    }
 
 }

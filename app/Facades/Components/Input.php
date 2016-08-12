@@ -45,5 +45,14 @@ class Input {
     public static function method() {
         return $GLOBALS['_input']->method();
     }
+    
+    /**
+     * The url.
+     * 
+     * @return string
+     */
+    public static function url($part = null) {
+        return $GLOBALS['_input']->url($part);
+    }
 
 }

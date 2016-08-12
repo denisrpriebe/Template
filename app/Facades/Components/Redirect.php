@@ -15,4 +15,8 @@ class Redirect {
         $GLOBALS['_redirect']->referrer();
     }
 
+    public static function route($name) {
+        $GLOBALS['_redirect']->route($name);
+    }
+
 }

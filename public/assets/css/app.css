@@ -58,6 +58,9 @@
     -webkit-transform: translate(-50%, -50%);
 
 }
+.login-panel-body {
+    padding: 15px 15px 4px 15px;
+}
 .centered-container {
     width: 300px;
     position: absolute;
@@ -71,7 +74,6 @@
 }
 .forgot-password {
     padding: 5px 0px 0px 0px;
-    margin-bottom: -5px;
 }
 
 /*

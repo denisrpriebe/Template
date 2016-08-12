@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use App\Models\Model;
+use App\Components\Configuration;
 
 class Application {
 
@@ -14,4 +15,9 @@ class Application {
         $GLOBALS[$name] = $model;
     }
 
+    public function load($page, Configuration $configuration) {
+        $route = $configuration->routes($page);
+        dd($route);
+    }
+    
 }

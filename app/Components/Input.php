@@ -42,10 +42,21 @@ class Input {
     public function method() {
         return filter_input(INPUT_SERVER, 'REQUEST_METHOD');
     }
-    
+
     public function url($part = null) {
         $url = parse_url(filter_input(INPUT_SERVER, 'REQUEST_URI'));
         return $part ? $url[$part] : $url;
+    }
+
+    /**
+     * Returns the current route.
+     * 
+     * @return string
+     */
+    public function route() {
+        $url = parse_url(filter_input(INPUT_SERVER, 'REQUEST_URI'));
+        parse_str($url['query'], $values);
+        return array_keys($values)[0];
     }
 
 }

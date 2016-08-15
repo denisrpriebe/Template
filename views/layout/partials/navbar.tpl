@@ -1,5 +1,5 @@
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         /**
          * Registration Form Validation
@@ -14,7 +14,7 @@
             },
             fields: {
                 email: {
-                    validators: {                        
+                    validators: {
                         notEmpty: {
                             message: 'Please enter your email.'
                         },
@@ -50,11 +50,11 @@
                     }
                 }
             }
-        }).on('success.form.fv', function(e) {
+        }).on('success.form.fv', function (e) {
 
             $('#updateUserSettingsBtn').addClass('m-progress');
 
-        }).on('error.form.fv', function(e) {
+        }).on('error.form.fv', function (e) {
 
             console.log("This shouldn't be happening.");
 
@@ -65,6 +65,7 @@
 </script>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
+    
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -95,7 +96,7 @@
                                 </ul>
                             </li>
                         <[else]>
-                            <li class="<[if in_array($key, Nav::getActiveTabs())]>active<[/if]>"><a href="<[Route::to($settings['route-name'])]>"><[$settings['icon']]> <[$settings['text']]></a></li>
+                            <li class="<[if in_array($key, Nav::getActiveTabs())]>active<[/if]>"><a class="animsition-link" href="<[Route::to($settings['route-name'])]>"><[$settings['icon']]> <[$settings['text']]></a></li>
                             <[/if]>
                         <[/foreach]>
                     <[/if]>
@@ -111,7 +112,7 @@
                             <a href="#" data-toggle="modal" data-target="#userSettingsModal"><span class="glyphicon glyphicon-cog"></span> Settings</a>
                         </li>
                         <li>
-                            <a href="<[Route::to('logout')]>"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                            <a class="animsition-link" href="<[Route::to('logout-page')]>"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
                         </li>
                     </ul>
                 </li>

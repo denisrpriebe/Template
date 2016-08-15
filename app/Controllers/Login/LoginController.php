@@ -15,14 +15,14 @@ class LoginController extends Controller {
     /**
      * 
      */
-    public function showLogin() {
+    protected function showLogin() {
         View::show('pages/login');
     }
 
     /**
      * 
      */
-    public function doLogin() {
+    protected function doLogin() {
 
         $credentials = [
             'email' => Input::post('email'),

@@ -4,7 +4,7 @@
 
 <[block name="page-script"]>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
 
             /**
@@ -19,7 +19,7 @@
                     validating: 'glyphicon glyphicon-refresh'
                 },
                 fields: {
-                    email: {                        
+                    email: {
                         validators: {
                             notEmpty: {
                                 message: 'Please enter your email.'
@@ -52,14 +52,14 @@
                                 min: 5,
                                 max: 30,
                                 message: 'Your password must be more than 5 characters.',
-                                success: function() {
-                                    
+                                success: function () {
+
                                 }
                             }
                         }
                     }
                 }
-            }).on('success.form.fv', function(e) {
+            }).on('success.form.fv', function (e) {
                 $('#registerBtn').addClass('m-progress');
             });
 
@@ -70,7 +70,7 @@
 
 <[block name="page-content"]>
 
-    <div class="centered-container">
+    <div class="centered-container animsition">
 
         <[include file="../layout/partials/alerts.tpl"]>
 
@@ -78,7 +78,7 @@
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-plus-sign"></span> Register
                 <div class="btn-group pull-right">
-                    <a role="button" class="btn btn-primary btn-xs loading-button" href="<[Route::to('login-page')]>">
+                    <a role="button" class="btn btn-primary btn-xs loading-button animsition-link" href="<[Route::to('login-page')]>">
                         <span class="glyphicon glyphicon-log-in"></span> Login
                     </a>
                 </div>

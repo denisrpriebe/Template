@@ -1,3 +1,11 @@
+body {
+    background: url('../images/background-blue-5.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 /*
  |--------------------------------------------------------------------------
  | Bootstrap Overrides
@@ -73,7 +81,7 @@
     font-size: x-small;
 }
 .forgot-password {
-    padding: 5px 0px 0px 0px;
+    padding: 5px 0px 5px 0px;
 }
 
 /*
@@ -93,4 +101,7 @@
 }
 .clear-nav {
     margin-top: 70px;
+}
+.logout-btn {
+    margin-bottom: 15px;
 }

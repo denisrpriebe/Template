@@ -41,7 +41,7 @@
 
 <[block name="page-content"]>
 
-    <div class="centered-container">
+    <div class="centered-container animsition">
 
         <[include file="../layout/partials/alerts.tpl"]>
 
@@ -49,7 +49,7 @@
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-question-sign"></span> Forgot Password
                 <div class="btn-group pull-right">
-                    <a role="button" class="btn btn-primary btn-xs loading-button" href="<[Route::to('login-page')]>">
+                    <a role="button" class="btn btn-primary btn-xs loading-button animsition-link" href="<[Route::to('login-page')]>">
                         <span class="glyphicon glyphicon-log-in"></span> Login
                     </a>
                 </div>

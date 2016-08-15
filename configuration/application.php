@@ -8,6 +8,13 @@
 return array (
     
     /**
+     * The application may be configured to be in development or production
+     * mode.
+     * 
+     */
+    'environment' => 'production',
+    
+    /**
      * The name of the application. This will show up in numerous views.
      * 
      */

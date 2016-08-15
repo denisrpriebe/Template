@@ -12,7 +12,7 @@ class LogoutController extends Controller {
     /**
      * 
      */
-    public function logout() {
+    protected function logout() {
 
         Auth::logout();
 

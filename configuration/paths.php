@@ -18,12 +18,12 @@ return [
      * visible for the client. This is normally js, css, images and other files.
      * 
      */
-    'assets' => 'http://localhost:8000/assets',
+    'assets' => 'http://127.0.0.1/Template/public/assets',
     
     /**
      * The path to the public directory. This is used for redirecting.
      * 
      */
-    'public' => 'http://localhost:8000/'
+    'public' => 'http://127.0.0.1/Template/public'
     
 ];

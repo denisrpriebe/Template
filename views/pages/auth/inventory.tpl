@@ -1,6 +1,6 @@
 <[extends file="../../layout/app.tpl"]>
 
-<[block name="page-title"]><[Config::application('name')]> : : Dashboard<[/block]>
+<[block name="page-title"]><[Config::application('name')]> : : Inventory<[/block]>
 
 <[block name="page-script"]>
     <script>
@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="jumbotron">
-                        <h1>Application Dashboard</h1>
+                        <h1>Inventory Page</h1>
                         <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
                     </div>
                 </div>

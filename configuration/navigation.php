@@ -13,25 +13,25 @@ return array(
         'dashboard' => array(
             'text' => 'Dashboard',
             'icon' => '<span class="glyphicon glyphicon-dashboard"></span>',
-            'route-name' => 'auth-dashboard'
+            'route-name' => 'auth-dashboard-page'
         ),
 
         'apps' => array(
             'text' => 'Apps',
             'icon' => '<span class="glyphicon glyphicon-th-large"></span>',
-            'route-name' => 'logout',
+            'route-name' => '#',
             'children' => array(
 
                 'word' => array(
                     'text' => 'Word',
                     'icon' => '<span class="glyphicon glyphicon-search"></span>',
-                    'route-name' => '../auth/link1.php'
+                    'route-name' => 'auth-dashboard-page'
                 ),
 
                 'excel' => array(
                     'text' => 'Excel',
                     'icon' => '<span class="glyphicon glyphicon-print"></span>',
-                    'route-name' => '../auth/link2.php'
+                    'route-name' => 'auth-dashboard-page'
                 )
 
             )
@@ -40,7 +40,7 @@ return array(
         'inventory' => array(
             'text' => 'Inventory',
             'icon' => '<span class="glyphicon glyphicon-inbox"></span>',
-            'route-name' => '../auth/page2.php'
+            'route-name' => 'auth-inventory-page'
         ),
 
     )

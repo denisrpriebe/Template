@@ -12,28 +12,32 @@ use App\Facades\Components\Redirect;
 use Carbon\Carbon;
 use App\Facades\Components\Crypto;
 use App\Facades\Components\Mail;
+use App\Facades\Components\Config;
 
 class PasswordController extends Controller {
 
     /**
+     * Shows the forgot password page.
      * 
      */
-    public function showForgotPassword() {
+    protected function showForgotPassword() {
         View::show('pages/forgot-password');
     }
 
     /**
+     * Shows the reset password page.
      * 
      */
-    public function showResetPassword() {
-        View::add('passwordResetToken', Input::url('fragment'));
+    protected function showResetPassword() {
+        View::add('passwordResetToken', Input::get('password-reset-token'));
         View::show('pages/reset-password');
     }
 
     /**
+     * Resets a user's password.
      * 
      */
-    public function resetPassword() {
+    protected function doResetPassword() {
 
         try {
 
@@ -78,9 +82,10 @@ class PasswordController extends Controller {
     }
 
     /**
+     * Sends the forgot password email.
      * 
      */
-    public function sendForgotPasswordEmail() {
+    protected function sendForgotPasswordEmail() {
 
         try {
 
@@ -105,7 +110,7 @@ class PasswordController extends Controller {
 
         $emailSent = Mail::send([
             'to' => $user->email,
-            'subject' => 'Template Test Email',
+            'subject' => Config::application('name') . ' : : ', 'Reset Password',
             'body' => View::make('emails/reset-password-email')
         ]);
 

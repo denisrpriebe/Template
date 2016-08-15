@@ -12,7 +12,7 @@
 
 <[block name="page-content"]>
 
-    <div class="container clear-nav">
+    <div class="container clear-nav animsition">
 
         <div class="jumbotron">
             <h1>Oops!</h1> 

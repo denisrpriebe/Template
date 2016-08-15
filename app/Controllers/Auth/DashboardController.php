@@ -9,9 +9,10 @@ use App\Facades\Components\View;
 class DashboardController extends Controller {
 
     /**
+     * Shows the dashboard page.
      * 
      */
-    public function showDashboard() {
+    protected function showDashboard() {
 
         Nav::setActiveTabs([
             'dashboard'

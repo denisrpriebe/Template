@@ -4,7 +4,7 @@
 
 <[block name="page-script"]>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
 
             /**
@@ -42,7 +42,7 @@
                         }
                     }
                 }
-            }).on('success.form.fv', function(e) {
+            }).on('success.form.fv', function (e) {
                 $('#loginBtn').addClass('m-progress');
             });
 
@@ -53,7 +53,7 @@
 
 <[block name="page-content"]>
 
-    <div class="login-container">
+    <div class="login-container animsition">
 
         <[include file="../layout/partials/alerts.tpl"]>
 
@@ -67,7 +67,7 @@
 
                     <span class="glyphicon glyphicon-log-in"></span> Login
                     <div class="btn-group pull-right">
-                        <a role="button" class="btn btn-primary btn-xs loading-button" href="<[Route::to('registration-page')]>">
+                        <a role="button" class="btn btn-primary btn-xs loading-button animsition-link" href="<[Route::to('registration-page')]>">
                             <span class="glyphicon glyphicon-plus-sign"></span> Register
                         </a>
                     </div>
@@ -83,7 +83,7 @@
                         <span class="glyphicon glyphicon-dashboard"></span> Dashboard
                     </a>
 
-                    <a role="button" class="btn btn-default btn-block loading-button" href="<[Route::to('logout-page')]>">
+                    <a role="button" class="btn btn-default btn-block logout-btn loading-button" href="<[Route::to('logout-page')]>">
                         <span class="glyphicon glyphicon-log-out"></span> Logout
                     </a>
 
@@ -111,7 +111,7 @@
                         <button id="loginBtn" type="submit" class="btn btn-primary btn-block">
                             <span class="glyphicon glyphicon-log-in"></span> Login
                         </button>
-                        <a role="button" class="btn btn-link btn-block forgot-password" href="<[Route::to('forgot-password-page')]>">Forgot Password?</button>
+                        <a role="button" class="btn btn-link btn-block forgot-password animsition-link" href="<[Route::to('forgot-password-page')]>">Forgot Password?</a>
                     </form>
 
                 <[/if]>

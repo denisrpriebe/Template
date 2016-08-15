@@ -1,27 +1,33 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     /**
-     * Page Background
-     * 
+     * Enable smooth page transitions
+     *
+     *
      */
-    $.backstretch('./assets/images/background-blue-5.jpg');
+    $(".animsition").animsition({
+        inClass: 'fade-in',
+        outClass: 'fade-out',
+        inDuration: 400,
+        outDuration: 800
+    });
 
     /**
      * Loading Button Effect
-     * 
+     *
      * Buttons with the 'loading-button' class will automatically get the
-     * loading effect when they are clicked. 
+     * loading effect when they are clicked.
      */
-    $('.loading-button').click(function() {
+    $('.loading-button').click(function () {
         $(this).addClass('m-progress');
     });
 
     /**
      * Close any alerts on the page after 7 seconds.
-     * 
+     *
      * @returns {void}
      */
-    setTimeout(function() {
+    setTimeout(function () {
         $('.alert').alert('close');
     }, 7000);
 
@@ -29,7 +35,7 @@ $(document).ready(function() {
 
 /**
  * Redirects the page to the given location.
- * 
+ *
  * @param {string} destination
  * @returns {void}
  */
@@ -39,7 +45,7 @@ function goto(destination) {
 
 /**
  * Submits the given form via ajax.
- * 
+ *
  * @param {jQuery Object} form
  * @param {function} callback
  * @returns {void}
@@ -50,14 +56,14 @@ function submitForm(form, callback) {
         url: form.attr('action'),
         data: form.serializeArray(),
         dataType: 'json',
-        success: function(response, status, xhr) {
+        success: function (response, status, xhr) {
             callback(response);
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.log('Ajax form submission error:');
             console.log(error);
         },
-        complete: function(xhr, status) {
+        complete: function (xhr, status) {
             console.log('Ajax form submission complete.');
         }
     });
@@ -65,7 +71,7 @@ function submitForm(form, callback) {
 
 /**
  * Shows an alert after an ajax call has been made.
- * 
+ *
  * @param {json} response
  * @returns {void}
  */

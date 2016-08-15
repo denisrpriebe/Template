@@ -13,11 +13,11 @@ use App\Models\Role;
 
 class RegistrationController extends Controller {
 
-    public function showRegistration() {
+    protected function showRegistration() {
         View::show('pages/register');
     }
 
-    public function doRegistration() {
+    protected function doRegistration() {
         $defaultRole = Role::where('role', '=', 'Default')->first();
 
         // check if a user already exists with the same email

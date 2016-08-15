@@ -15,8 +15,8 @@ class UserController extends Controller {
     /**
      * 
      */
-    public function updateSettings() {
-        
+    protected function updateSettings() {
+
         $user = User::find(Auth::user()->id);
 
         $newPassword = (Input::post('password') != '__USE_EXISTING__') ? Crypto::hash(Input::post('password')) : false;

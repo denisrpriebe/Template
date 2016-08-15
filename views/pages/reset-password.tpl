@@ -53,7 +53,7 @@
 
 <[block name="page-content"]>
 
-    <div class="centered-container">
+    <div class="centered-container animsition">
 
         <[include file="../layout/partials/alerts.tpl"]>
 

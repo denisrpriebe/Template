@@ -10,6 +10,10 @@ $(document).ready(function () {
         outClass: 'fade-out',
         inDuration: 400,
         outDuration: 800
+    }).on('animsition.inStart', function(){
+        $('.loading').hide();
+    }).on('animsition.outEnd', function(){
+        $('.loading').show();
     });
 
     /**

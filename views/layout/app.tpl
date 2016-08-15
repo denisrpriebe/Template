@@ -13,10 +13,16 @@
 
         <title><[block name="page-title"]><[/block]></title>
 
-        <[block name="page-script"]><[/block]>
+    <[block name="page-script"]><[/block]>
 
     </head>
-    <body>        
-        <[block name="page-content"]><[/block]>             
+    <body>
+
+        <div class="loading">
+            <div class="uil-rolling-css" style="transform:scale(0.67);"><div><div></div><div></div></div></div>
+        </div>
+
+    <[block name="page-content"]><[/block]>
+    
     </body>
 </html>

@@ -1,12 +1,15 @@
 # Template
 
 The Template project is my attempt at a MVC based framework to help me get projects off the ground faster.
+It is a Smarty PHP Web Framework.
+
+You need composer and bower to install the framework components.
 
 You may install Template with composer:
 
-    composer create-project denisrpriebe/template -s alpha
+    composer create-project denisrpriebe/template
 
-then
+then run
 
     composer install
     

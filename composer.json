@@ -1,6 +1,6 @@
 {
     "name": "denisrpriebe/template",
-    "description": "A framework template to start a project faster.",
+    "description": "A Smarty PHP Web Framework.",
     "type": "library",
     "homepage": "https://github.com/denisrpriebe/Template",
     "license": "MIT",

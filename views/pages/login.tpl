@@ -79,13 +79,13 @@
 
                     <h3 class="text-center">Hello <[Auth::user()->first_name]>.</h3>
 
-                    <button type="button" class="btn btn-primary btn-block login-btn-home loading-button" onclick="goto('auth/dashboard.php')">
+                    <a role="button" class="btn btn-primary btn-block login-btn-home loading-button" href="<[Route::to('auth-dashboard-page')]>">
                         <span class="glyphicon glyphicon-dashboard"></span> Dashboard
-                    </button>
+                    </a>
 
-                    <button type="button" class="btn btn-default btn-block loading-button" onclick="goto('logout.php')">
+                    <a role="button" class="btn btn-default btn-block loading-button" href="<[Route::to('logout-page')]>">
                         <span class="glyphicon glyphicon-log-out"></span> Logout
-                    </button>
+                    </a>
 
                 <[else]>
 

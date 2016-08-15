@@ -1,4 +1,4 @@
 <?php
 
-header("Location: public/login.php");
-die();
+//header("Location: public/login.php");
+//die();

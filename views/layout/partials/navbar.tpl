@@ -14,19 +14,12 @@
             },
             fields: {
                 email: {
-                    validators: {
-                        verbose: false,
+                    validators: {                        
                         notEmpty: {
                             message: 'Please enter your email.'
                         },
                         emailAddress: {
                             message: 'Please enter a valid email address.'
-                        },
-                        remote: {
-                            message: 'This email has already been registered.',
-                            url: '../requests/check-email.php',
-                            type: 'POST',
-                            delay: 2000
                         }
                     }
                 },
@@ -130,7 +123,7 @@
 <!-- Preferences Modal -->
 <div id="userSettingsModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-sm">
-        <form role="form" method="post" action="../requests/update-user-settings.php" id="userSettingsForm">
+        <form role="form" method="post" action="<[Route::to('update-user-settings')]>" id="userSettingsForm">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>

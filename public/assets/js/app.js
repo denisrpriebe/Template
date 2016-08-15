@@ -4,7 +4,7 @@ $(document).ready(function() {
      * Page Background
      * 
      */
-    $.backstretch('http://127.0.0.1/projects/Template/public/assets/images/background-blue-5.jpg');
+    $.backstretch('./assets/images/background-blue-5.jpg');
 
     /**
      * Loading Button Effect

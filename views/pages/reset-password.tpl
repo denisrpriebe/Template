@@ -63,7 +63,7 @@
             </div>
             <div class="panel-body">
 
-                <form role="form" method="post" action="requests/reset-password.php" id="resetPasswordForm">
+                <form role="form" method="post" action="<[Route::to('do-reset-password')]>" id="resetPasswordForm">
                     <input type="hidden" name="password_reset_token" value="<[$passwordResetToken]>">
                     <div class="form-group">
                         <label for="newPassword">New Password:</label>

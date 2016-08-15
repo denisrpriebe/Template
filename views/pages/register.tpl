@@ -19,20 +19,13 @@
                     validating: 'glyphicon glyphicon-refresh'
                 },
                 fields: {
-                    email: {
-                        verbose: false,
+                    email: {                        
                         validators: {
                             notEmpty: {
                                 message: 'Please enter your email.'
                             },
                             emailAddress: {
                                 message: 'Please enter a valid email address.'
-                            },
-                            remote: {
-                                message: 'This email has already been registered.',
-                                url: './requests/check-email.php',
-                                type: 'POST',
-                                delay: 2000
                             }
                         }
                     },
@@ -85,14 +78,14 @@
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-plus-sign"></span> Register
                 <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-primary btn-xs loading-button" onclick="goto('login.php')">
+                    <a role="button" class="btn btn-primary btn-xs loading-button" href="<[Route::to('login-page')]>">
                         <span class="glyphicon glyphicon-log-in"></span> Login
-                    </button>
+                    </a>
                 </div>
             </div>
             <div class="panel-body">
 
-                <form role="form" method="post" action="requests/register.php" id="registrationForm">
+                <form role="form" method="post" action="<[Route::to('do-registration')]>" id="registrationForm">
                     <div class="form-group">
                         <label for="loginEmail">Email:</label>
                         <div class="input-group">

@@ -5,7 +5,7 @@
  * 
  * Different system paths are configured here.
  */
-return array(
+return [
     
     /**
      * The path to the views directory. This should contain .tpl files.
@@ -18,11 +18,12 @@ return array(
      * visible for the client. This is normally js, css, images and other files.
      * 
      */
-    'assets' => 'http://127.0.0.1/projects/Template/public/assets',
+    'assets' => 'http://localhost:8000/assets',
     
     /**
      * The path to the public directory. This is used for redirecting.
      * 
      */
-    'public' => 'http://127.0.0.1/projects/Template/public'
-);
+    'public' => 'http://localhost:8000/'
+    
+];

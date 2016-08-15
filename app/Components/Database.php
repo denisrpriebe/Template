@@ -18,7 +18,7 @@ class Database {
 
         $capsule = new Capsule;
 
-        $capsule->addConnection(array(
+        $capsule->addConnection([
             "driver" => "mysql",
             "host" => $configuration->database('host'),
             "database" => $configuration->database('dbname'),
@@ -27,7 +27,7 @@ class Database {
             "charset" => "utf8",
             "collation" => "utf8_general_ci",
             "prefix" => ""
-        ));
+        ]);
 
         $capsule->setEventDispatcher(new Dispatcher(new Container));
 

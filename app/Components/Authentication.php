@@ -18,14 +18,14 @@ class Authentication {
      * @var string 
      */
     protected $name;
-    
+
     /**
      * The second value used when authenticating users. Usually "password".
      * 
      * @var string
      */
     protected $password;
-    
+
     /**
      * The location to redirect a user if they try to access a page without
      * the correct privileges.
@@ -33,28 +33,28 @@ class Authentication {
      * @var string
      */
     protected $guardRedirect;
-    
+
     /**
      * The current application session.
      * 
      * @var App\Components\Session 
      */
     protected $session;
-    
+
     /**
      * The user that is being authenticated.
      * 
      * @var App\Models\User
      */
     protected $user;
-    
+
     /**
      * The input component.
      * 
      * @var App\Components\Input
      */
     protected $input;
-    
+
     /**
      * The redirect component.
      * 
@@ -93,18 +93,16 @@ class Authentication {
     public function check(array $credentials) {
 
         try {
-            
+
             $user = User::where($this->name, '=', $credentials[$this->name])
                     ->where($this->password, '=', $credentials[$this->password])
                     ->firstOrFail();
 
             $this->session->store('_authUserId', $user->id);
             return true;
-            
         } catch (ModelNotFoundException $ex) {
-            
+
             return false;
-            
         }
     }
 
@@ -137,11 +135,11 @@ class Authentication {
     public function guard() {
         if (!$this->session->has('_authUserId')) {
 
-            $this->session->flash('alert', array(
+            $this->session->flash('alert', [
                 'type' => 'warning',
                 'title' => 'Authentication Required',
                 'text' => 'You must be logged in to access this system.'
-            ));
+            ]);
 
             $this->redirect->to($this->guardRedirect);
         }
@@ -154,11 +152,11 @@ class Authentication {
     public function post() {
         if ($this->input->method() != 'POST') {
 
-            $this->session->flash('alert', array(
+            $this->session->flash('alert', [
                 'type' => 'warning',
                 'title' => 'Bad Method',
                 'text' => 'You cannot access that page like this.'
-            ));
+            ]);
 
             $this->redirect->to($this->guardRedirect);
         }
@@ -171,11 +169,11 @@ class Authentication {
     public function get() {
         if ($this->input->method() != 'GET') {
 
-            $this->session->flash('alert', array(
+            $this->session->flash('alert', [
                 'type' => 'warning',
                 'title' => 'Bad Method',
                 'text' => 'You cannot access that page like this.'
-            ));
+            ]);
 
             $this->redirect->to($this->guardRedirect);
         }

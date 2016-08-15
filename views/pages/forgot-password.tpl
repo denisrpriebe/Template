@@ -49,14 +49,14 @@
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-question-sign"></span> Forgot Password
                 <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-primary btn-xs loading-button" onclick="goto('login.php');">
+                    <a role="button" class="btn btn-primary btn-xs loading-button" href="<[Route::to('login-page')]>">
                         <span class="glyphicon glyphicon-log-in"></span> Login
-                    </button>
+                    </a>
                 </div>
             </div>
             <div class="panel-body">
 
-                <form role="form" method="post" action="requests/send-forgot-password-email.php" id="forgotPasswordForm">
+                <form role="form" method="post" action="<[Route::to('send-forgot-password-email')]>" id="forgotPasswordForm">
                     <p>Please enter the email that is associated with your account. We will email you a password reset link.</p>
                     <div class="form-group">
                         <label for="loginEmail">Email:</label>

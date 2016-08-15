@@ -57,10 +57,10 @@ class Session {
      * 
      */
     private function setFingerprint() {
-        $this->store('_fingerprint', array(
+        $this->store('_fingerprint', [
             'birth' => time(),
             'ip' => filter_input(INPUT_SERVER, 'REMOTE_ADDR')
-        ));
+        ]);
     }
 
     /**
@@ -129,10 +129,10 @@ class Session {
      */
     public function flash($name, $object) {
         $this->store($name, $object);
-        $this->store('_flash', array(
+        $this->store('_flash', [
             'name' => $name,
             'time' => 0
-        ));
+        ]);
     }
 
     private function checkFlash() {
@@ -163,11 +163,15 @@ class Session {
                 array_push($history, $page);
                 $this->store('_history', $history);
             } else {
-                $this->store('_history', array($page));
+                $this->store('_history', [$page]);
             }
         }
     }
 
+    /**
+     * 
+     * @return type
+     */
     public function previousPage() {
         $history = $this->get('_history');
         return end($history);

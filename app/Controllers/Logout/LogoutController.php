@@ -16,13 +16,13 @@ class LogoutController extends Controller {
 
         Auth::logout();
 
-        Session::flash('alert', array(
+        Session::flash('alert', [
             'type' => 'info',
             'title' => 'Logged Out',
             'text' => 'You have successfully logged out. See you again soon!'
-        ));
+        ]);
 
-        Redirect::to('?/login');
+        Redirect::route('login-page');
     }
 
 }

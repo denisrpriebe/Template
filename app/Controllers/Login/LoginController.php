@@ -24,25 +24,22 @@ class LoginController extends Controller {
      */
     public function doLogin() {
 
-        $credentials = array(
+        $credentials = [
             'email' => Input::post('email'),
             'password' => Crypto::hash(Input::post('password'))
-        );
+        ];
 
         if (Auth::check($credentials)) {
-            
-            Redirect::route('auth-dashboard');
-            
-        } else {
-
-            Session::flash('alert', array(
-                'type' => 'danger',
-                'title' => 'Invalid Credentials',
-                'text' => 'We do not recognize your username and/or password.'
-            ));
-
-            Redirect::route('login-page');
+            Redirect::route('auth-dashboard-page');
         }
+
+        Session::flash('alert', [
+            'type' => 'danger',
+            'title' => 'Invalid Credentials',
+            'text' => 'We do not recognize your username and/or password.'
+        ]);
+
+        Redirect::route('login-page');
     }
 
 }

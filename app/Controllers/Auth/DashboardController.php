@@ -12,10 +12,10 @@ class DashboardController extends Controller {
      * 
      */
     public function showDashboard() {
-        
-        Nav::setActiveTabs(array(
+
+        Nav::setActiveTabs([
             'dashboard'
-        ));
+        ]);
 
         View::show('pages/auth/dashboard');
     }

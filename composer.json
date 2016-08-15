@@ -12,6 +12,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
+        "php": ">=5.6.4",
         "smarty/smarty": "3.1.29",
         "nesbot/carbon": "~1.21",
         "phpmailer/phpmailer": "^5.2",

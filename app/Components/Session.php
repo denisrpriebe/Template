@@ -33,21 +33,21 @@ class Session {
 
         // Make sure we have a fingerprint set
         if (!$this->has('_fingerprint')) {
-            session_regenerate_id(true);
+            session_regenerate_id();
             $this->setFingerprint();
         }
 
         $fingerprint = $this->get('_fingerprint');
 
         if ($fingerprint['ip'] !== filter_input(INPUT_SERVER, 'REMOTE_ADDR')) {
-            session_regenerate_id(true);
+            session_regenerate_id();
             $this->destroyData();
             $this->setFingerprint();
         }
 
         // Regenerate session ID every five minutes
         if ($fingerprint['birth'] < (time() - 300)) {
-            session_regenerate_id(true);
+            session_regenerate_id();
             $fingerprint['birth'] = time();
         }
     }

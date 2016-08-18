@@ -8,8 +8,8 @@
         <[include file="./include/styles.tpl"]>
         <[include file="./include/scripts.tpl"]>
 
-        <link rel="shortcut icon" href="<[View::asset('images/favicon.ico')]>" type="image/x-icon">
-        <link rel="icon" href="<[View::asset('images/favicon.ico')]>" type="image/x-icon">
+        <link rel="shortcut icon" href="<[View::asset('images/icon.png')]>" type="image/png">
+        <link rel="icon" href="<[View::asset('images/icon.png')]>" type="image/png">
 
         <title><[block name="page-title"]><[/block]></title>
 
@@ -19,10 +19,10 @@
     <body>
 
         <div class="loading">
-            <div class="uil-rolling-css" style="transform:scale(0.67);"><div><div></div><div></div></div></div>
+            <img src="<[View::asset('images/loading.svg')]>" >
         </div>
 
-    <[block name="page-content"]><[/block]>
+        <[block name="page-content"]><[/block]>
     
     </body>
 </html>

@@ -8,12 +8,12 @@ $(document).ready(function () {
     $(".animsition").animsition({
         inClass: 'fade-in',
         outClass: 'fade-out',
-        inDuration: 400,
-        outDuration: 800
+        inDuration: 250,
+        outDuration: 250
     }).on('animsition.inStart', function(){
-        $('.loading').hide();
+        $('.loading').fadeOut();
     }).on('animsition.outEnd', function(){
-        $('.loading').show();
+        $('.loading').fadeIn();
     });
 
     /**

@@ -17,6 +17,8 @@ use App\Components\View as ViewComponent;
 use App\Components\Navigation as NavigationComponent;
 use App\Components\Route as RouteComponent;
 
+use App\Bootstrap\GlobalView;
+
 use App\Models\User;
 
 // Initialize the application
@@ -35,9 +37,8 @@ $configuration = new ConfigurationComponent(array(
     'routes' => require_once __DIR__ . '/../configuration/routes.php'
 ));
 
-$database = new DatabaseComponent($configuration);
-
 $input = new InputComponent();
+$database = new DatabaseComponent($configuration);
 $encryption = new EncryptionComponent($configuration);
 $mail = new MailComponent($configuration);
 $navigation = new NavigationComponent($configuration);
@@ -65,3 +66,6 @@ $application->addComponent($redirect, '_redirect');
 $application->addComponent($navigation, '_navigation');
 $application->addComponent($view, '_view');
 $application->addComponent($route, '_route');
+
+$globalView = new GlobalView;
+$globalView->bootData();

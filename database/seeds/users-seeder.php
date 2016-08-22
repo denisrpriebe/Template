@@ -1,20 +1,20 @@
 <?php
 
-require_once '../../app/start.php';
+require_once '../app/start.php';
 
-use App\Facades\Models\User;
-use App\Facades\Crypto;
+use App\Models\User;
+use App\Models\Role;
+use App\Facades\Components\Crypto;
 
-User::create(array(
+$defaultRole = Role::where('role', '=', 'Default')->first();
+$administratorRole = Role::where('role', '=', 'Administrator')->first();
+
+$denis = User::create(array(
     'email' => 'denisrpriebe@gmail.com',
     'first_name' => 'Denis',
     'last_name' => 'Priebe',
     'password' => Crypto::hash('password')
 ));
 
-User::create(array(
-    'email' => 'jim.shnick@aol.com',
-    'first_name' => 'Jim',
-    'last_name' => 'Shnick',
-    'password' => Crypto::hash('12500')
-));
+$denis->roles()->save($defaultRole);
+$denis->roles()->save($administratorRole);

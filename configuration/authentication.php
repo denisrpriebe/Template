@@ -25,6 +25,6 @@ return array (
      * attempts to access a page that is being "guarded".
      * 
      */
-    'guard-redirect' => '?/register'
+    'guard-redirect' => '?/login'
     
 );

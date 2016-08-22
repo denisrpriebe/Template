@@ -18,13 +18,13 @@ return array (
      * The username used to connect to the SMTP server.
      * 
      */
-    'username' => 'youusername@gmail.com',
+    'username' => 'nationalrecognitionproducts@gmail.com',
     
     /**
      * The password used to connect to the SMTP server.
      * 
      */
-    'password' => 'password',
+    'password' => 'NRP4lif3',
     
     /**
      * The encryption method used to connect to the SMTP server.

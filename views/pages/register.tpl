@@ -6,18 +6,12 @@
     <script>
         $(document).ready(function () {
 
-
             /**
              * Registration Form Validation
              *
              */
             $('#registrationForm').formValidation({
                 framework: 'bootstrap',
-                icon: {
-                    valid: 'glyphicon glyphicon-ok',
-                    invalid: 'glyphicon glyphicon-remove',
-                    validating: 'glyphicon glyphicon-refresh'
-                },
                 fields: {
                     email: {
                         validators: {
@@ -51,10 +45,7 @@
                             stringLength: {
                                 min: 5,
                                 max: 30,
-                                message: 'Your password must be more than 5 characters.',
-                                success: function () {
-
-                                }
+                                message: 'Your password must be more than 5 characters.'
                             }
                         }
                     }
@@ -63,22 +54,21 @@
                 $('#registerBtn').addClass('m-progress');
             });
 
-
         });
     </script>
 <[/block]>
 
 <[block name="page-content"]>
 
+    <[include file="../layout/partials/alerts.tpl"]>
+    
     <div class="centered-container animsition">
 
-        <[include file="../layout/partials/alerts.tpl"]>
-
-        <div class="panel panel-primary panel-transparent">
+        <div class="panel panel-default panel-transparent">
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-plus-sign"></span> Register
-                <div class="btn-group pull-right">
-                    <a role="button" class="btn btn-primary btn-xs loading-button animsition-link" href="<[Route::to('login-page')]>">
+                <div class="pull-right">
+                    <a role="button" class="btn btn-default panel-heading-btn btn-xs loading-button animsition-link" href="<[Route::to('login-page')]>">
                         <span class="glyphicon glyphicon-log-in"></span> Login
                     </a>
                 </div>
@@ -86,45 +76,31 @@
             <div class="panel-body">
 
                 <form role="form" method="post" action="<[Route::to('do-registration')]>" id="registrationForm">
-                    <div class="form-group">
-                        <label for="loginEmail">Email:</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="emailAddon">
-                                <span class="glyphicon glyphicon-user"></span>
-                            </span>
-                            <input id="loginEmail" name="email" type="email" class="form-control" placeholder="Email" aria-describedby="emailAddon" required>
-                        </div>
+
+                    <div class="form-group label-floating">
+                        <label class="control-label">Email:</label>
+                        <input type="email" name="email" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="loginFirstName">First Name:</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="firstNameAddon">
-                                <span class="glyphicon glyphicon-user"></span>
-                            </span>
-                            <input id="loginFirstName" name="first_name" type="text" class="form-control" placeholder="First Name" aria-describedby="firstNameAddon" required>
-                        </div>
+
+                    <div class="form-group label-floating">
+                        <label class="control-label">First Name:</label>
+                        <input type="text" name="first_name" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="loginLastName">Last Name:</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="lastNameAddon">
-                                <span class="glyphicon glyphicon-user"></span>
-                            </span>
-                            <input id="loginLastName" name="last_name" type="text" class="form-control" placeholder="Last Name" aria-describedby="lastNameAddon" required>
-                        </div>
+
+                    <div class="form-group label-floating">
+                        <label class="control-label">Last Name:</label>
+                        <input type="text" name="last_name" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="loginPassword">New Password:</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="passwordAddon">
-                                <span class="glyphicon glyphicon-lock"></span>
-                            </span>
-                            <input id="loginPassword" name="password" type="password" class="form-control" placeholder="New Password" aria-describedby="passwordAddon" required>
-                        </div>
+
+                    <div class="form-group label-floating">
+                        <label class="control-label">New Password:</label>
+                        <input type="password" name="password" class="form-control" required>
                     </div>
-                    <button id="registerBtn" type="submit" class="btn btn-primary btn-block">
+
+                    <button id="registerBtn" type="submit" class="btn btn-primary btn-block form-submit-btn">
                         <span class="glyphicon glyphicon-plus-sign"></span> Register
                     </button>
+
                 </form>
 
             </div>

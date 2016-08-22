@@ -4,7 +4,7 @@
 
 <[block name="page-script"]>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
 
             /**
@@ -12,12 +12,7 @@
              *
              */
             $('#resetPasswordForm').formValidation({
-                framework: 'bootstrap',
-                icon: {
-                    valid: 'glyphicon glyphicon-ok',
-                    invalid: 'glyphicon glyphicon-remove',
-                    validating: 'glyphicon glyphicon-refresh'
-                },
+                framework: 'bootstrap',                
                 fields: {
                     password: {
                         validators: {
@@ -46,6 +41,7 @@
                 $('#sendEmailBtn').addClass('m-progress');
             });
 
+            $.material.init();
 
         });
     </script>
@@ -57,33 +53,27 @@
 
         <[include file="../layout/partials/alerts.tpl"]>
 
-        <div class="login-box panel panel-primary panel-transparent">
+        <div class="login-box panel panel-default panel-transparent">
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-refresh"></span> Reset Password
             </div>
             <div class="panel-body">
 
                 <form role="form" method="post" action="<[Route::to('do-reset-password')]>" id="resetPasswordForm">
+
                     <input type="hidden" name="password_reset_token" value="<[$passwordResetToken]>">
-                    <div class="form-group">
-                        <label for="newPassword">New Password:</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="newPasswordAddon">
-                                <span class="glyphicon glyphicon-lock"></span>
-                            </span>
-                            <input id="newPassword" name="password" type="password" class="form-control" placeholder="New Password" aria-describedby="newPasswordAddon" required>
-                        </div>
+
+                    <div class="form-group label-floating">
+                        <label class="control-label">New Password:</label>
+                        <input type="password" name="password" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="reEnterPassword">Re-enter Password:</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="reEnterPasswordAddon">
-                                <span class="glyphicon glyphicon-lock"></span>
-                            </span>
-                            <input id="reEnterPassword" name="confirmPassword" type="password" class="form-control" placeholder="Re-enter Password" aria-describedby="reEnterPasswordAddon" required>
-                        </div>
+
+                    <div class="form-group label-floating">
+                        <label class="control-label">Re-enter Password:</label>
+                        <input type="password" name="confirmPassword" class="form-control" required>
                     </div>
-                    <button id="sendEmailBtn" type="submit" class="btn btn-primary btn-block">
+
+                    <button id="sendEmailBtn" type="submit" class="btn btn-primary btn-block form-submit-btn">
                         <span class="glyphicon glyphicon-refresh"></span> Reset Password
                     </button>
                 </form>

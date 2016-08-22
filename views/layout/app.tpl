@@ -4,6 +4,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
         <[include file="./include/styles.tpl"]>
         <[include file="./include/scripts.tpl"]>
@@ -13,13 +14,13 @@
 
         <title><[block name="page-title"]><[/block]></title>
 
-    <[block name="page-script"]><[/block]>
+        <[block name="page-script"]><[/block]>
 
     </head>
     <body>
 
         <div class="loading">
-            <img src="<[View::asset('images/loading.svg')]>" >
+            <img src="<[View::asset('images/loading.gif')]>" >
         </div>
 
         <[block name="page-content"]><[/block]>

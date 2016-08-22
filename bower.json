@@ -23,7 +23,9 @@
     "jquery": "2.2.4",
     "bootstrap": "3.3.7",
     "jquery-backstretch": "2.0.4",
-    "animsition": "^4.0.2"
+    "animsition": "^4.0.2",
+    "material-kit": "^1.1.0",
+    "datatables.net-bs": "^1.10.12"
   },
   "resolutions": {
     "jquery": "2.2.4"

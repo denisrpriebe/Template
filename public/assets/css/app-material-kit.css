@@ -1,10 +1,5 @@
 body {
-/*    background: url('../images/background-blue-5.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;*/
-background-color: #efefef;
+    
 }
 
 .loading {
@@ -15,46 +10,23 @@ background-color: #efefef;
     -webkit-transform: translate(-50%, -50%);
 }
 
-/*
- |--------------------------------------------------------------------------
- | Bootstrap Overrides
- |--------------------------------------------------------------------------
- |
- | Override any default bootstrap styles here.
- |
-*/
-.panel {
-    background-color: rgba(255, 255, 255, .65);
-}
-.navbar {
-    -webkit-box-shadow: 0 6px 15px -4px rgba(0,0,0,.375);
-    -moz-box-shadow: 0 6px 15px -4px rgba(0,0,0,.375);
-    box-shadow: 0 6px 15px -4px rgba(0,0,0,.375);
 
+.panel-heading-btn {
+    margin: 0px;
 }
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    padding: 0px 22px 0px 0px;
+
+.form-submit-btn {
+    margin: 24px 0px 0px 0px;
 }
-.navbar-brand > img {
-    padding: 7px 10px;
-    width: 50px;
-}
-.navbar-brand {
-    padding-left: 8px;
-}
-.alert, .jumbotron, .panel {
-    -webkit-box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
-    -moz-box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
-    box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
-}
+
 .modal-footer {
     text-align: center;
+    padding: 0px 0px 30px 0px;
 }
-.jumbotron {
-    background-color: rgba(238, 238, 238, .65);
+.modal-footer-padding {
+    padding: 0px 0px 30px 0px;
 }
+
 
 /*
  |--------------------------------------------------------------------------
@@ -90,7 +62,7 @@ background-color: #efefef;
     font-size: x-small;
 }
 .forgot-password {
-    padding: 5px 0px 5px 0px;
+    margin: 0px;
 }
 
 /*
@@ -109,7 +81,7 @@ background-color: #efefef;
     display: none;
 }
 .clear-nav {
-    margin-top: 70px;
+    margin-top: 90px;
 }
 .logout-btn {
     margin-bottom: 15px;

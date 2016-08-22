@@ -3,7 +3,6 @@
 namespace App\Controllers\Database;
 
 use App\Controllers\Controller;
-use App\Models\Role;
 use App\Facades\Components\Config;
 use App\Facades\Components\Redirect;
 use App\Facades\Components\Session;
@@ -24,17 +23,12 @@ class DatabaseController extends Controller {
         }
 
         // Start Seeds
-        
-        Role::create([
-            'role' => 'Administrator'
-        ]);
 
-        Role::create([
-            'role' => 'Default'
-        ]);
+        require_once '../database/seeds/roles-seeder.php';
+        require_once '../database/seeds/users-seeder.php';
 
         // End Seeds
-        
+
         Session::flash('alert', [
             'type' => 'success',
             'title' => 'Database Seeded',

@@ -12,7 +12,7 @@ return array (
      * mode.
      * 
      */
-    'environment' => 'production',
+    'environment' => 'development',
     
     /**
      * The name of the application. This will show up in numerous views.

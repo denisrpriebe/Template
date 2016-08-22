@@ -7,11 +7,6 @@
          */
         $('#userSettingsForm').formValidation({
             framework: 'bootstrap',
-            icon: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
             fields: {
                 email: {
                     validators: {
@@ -51,21 +46,17 @@
                 }
             }
         }).on('success.form.fv', function (e) {
-
             $('#updateUserSettingsBtn').addClass('m-progress');
-
-        }).on('error.form.fv', function (e) {
-
-            console.log("This shouldn't be happening.");
-
         });
+
+
 
     });
 
 </script>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    
+<nav class="navbar navbar-default navbar-fixed-top">
+
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -74,7 +65,6 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <img src="<[View::asset('images/icon.png')]>" />
                 <[Config::application('name')]>
             </a>
         </div>
@@ -96,10 +86,12 @@
                                 </ul>
                             </li>
                         <[else]>
-                            <li class="<[if in_array($key, Nav::getActiveTabs())]>active<[/if]>"><a class="animsition-link" href="<[Route::to($settings['route-name'])]>"><[$settings['icon']]> <[$settings['text']]></a></li>
-                            <[/if]>
-                        <[/foreach]>
-                    <[/if]>
+                            <li class="<[if in_array($key, Nav::getActiveTabs())]>active<[/if]>">
+                                <a class="animsition-link" href="<[Route::to($settings['route-name'])]>"><[$settings['icon']]> <[$settings['text']]></a>
+                            </li>
+                        <[/if]>
+                    <[/foreach]>
+                <[/if]>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -133,44 +125,29 @@
                     </h4>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="userSettingsEmail">Your Email:</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="emailAddon">
-                                <span class="glyphicon glyphicon-user"></span>
-                            </span>
-                            <input value="<[Auth::user()->email]>" id="userSettingsEmail" name="email" type="email" class="form-control" placeholder="Email" aria-describedby="emailAddon" required>
-                        </div>
+
+                    <div class="form-group label-floating">
+                        <label class="control-label">Your Email:</label>
+                        <input value="<[Auth::user()->email]>" name="email" type="email" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="userSettingsFirstName">First Name:</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="firstNameAddon">
-                                <span class="glyphicon glyphicon-user"></span>
-                            </span>
-                            <input value="<[Auth::user()->first_name]>" id="userSettingsFirstName" name="first_name" type="text" class="form-control" placeholder="First Name" aria-describedby="firstNameAddon" required>
-                        </div>
+
+                    <div class="form-group label-floating">
+                        <label class="control-label">First Name:</label>
+                        <input value="<[Auth::user()->first_name]>" name="first_name" type="text" class="form-control" required="">
                     </div>
-                    <div class="form-group">
-                        <label for="userSettingsLastName">Last Name:</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="lastNameAddon">
-                                <span class="glyphicon glyphicon-user"></span>
-                            </span>
-                            <input value="<[Auth::user()->last_name]>" id="userSettingsLastName" name="last_name" type="text" class="form-control" placeholder="Last Name" aria-describedby="lastNameAddon" required>
-                        </div>
+
+                    <div class="form-group label-floating">
+                        <label class="control-label">Last Name:</label>
+                        <input value="<[Auth::user()->last_name]>" name="last_name" type="text" class="form-control" required="">
                     </div>
-                    <div class="form-group">
-                        <label for="userSettingsPassword">Password:</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="passwordAddon">
-                                <span class="glyphicon glyphicon-lock"></span>
-                            </span>
-                            <input value="__USE_EXISTING__" id="userSettingsPassword" name="password" type="password" class="form-control" placeholder="Password" aria-describedby="passwordAddon" required>
-                        </div>
+
+                    <div class="form-group label-floating">
+                        <label class="control-label">Password:</label>
+                        <input value="__USE_EXISTING__" name="password" type="password" class="form-control" required="">
                     </div>
+
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer modal-footer-padding" style="padding: 0px 0px 30px 0px;">
                     <button id="updateUserSettingsBtn" type="submit" class="btn btn-primary">
                         <span class="glyphicon glyphicon-refresh"></span> Update
                     </button>

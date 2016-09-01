@@ -6,7 +6,7 @@
  * Email settings and credentials can be configured here. Currently, the mail
  * component sends email through SMTP.
  */
-return array (
+return [
     
     /**
      * SMTP server to send email through.
@@ -39,4 +39,4 @@ return array (
      */
     'port' => '587'
     
-);
+];

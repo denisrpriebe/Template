@@ -5,24 +5,30 @@ namespace App\Controllers\Login;
 use App\Controllers\Controller;
 use App\Facades\Components\View;
 use App\Facades\Components\Input;
-use App\Facades\Components\Session;
+use App\Facades\Components\Flash;
 use App\Facades\Components\Redirect;
 use App\Facades\Components\Crypto;
 use App\Facades\Components\Auth;
+use App\Facades\Components\Validator;
+use App\Validators\LoginValidator;
 
 class LoginController extends Controller {
 
     /**
-     * 
+     * Shows the login page.
+     *
      */
-    protected function showLogin() {
+    protected function show() {
         View::show('pages/login');
     }
 
     /**
-     * 
+     * Attempts to login the user.
+     *
      */
-    protected function doLogin() {
+    protected function login() {
+
+        Validator::run(new LoginValidator);
 
         $credentials = [
             'email' => Input::post('email'),
@@ -30,11 +36,10 @@ class LoginController extends Controller {
         ];
 
         if (Auth::check($credentials)) {
-            Redirect::route('auth-dashboard-page');
+            Redirect::route('dashboard-page');
         }
 
-        Session::flash('alert', [
-            'type' => 'danger',
+        Flash::error([
             'title' => 'Invalid Credentials',
             'text' => 'We do not recognize your username and/or password.'
         ]);

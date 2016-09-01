@@ -12,12 +12,8 @@ class DashboardController extends Controller {
      * Shows the dashboard page.
      * 
      */
-    protected function showDashboard() {
-
-        Nav::setActiveTabs([
-            'dashboard'
-        ]);
-
+    protected function show() {
+        Nav::setActiveTabs(['dashboard']);
         View::show('pages/auth/dashboard');
     }
 

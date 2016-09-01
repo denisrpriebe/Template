@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Register;
+namespace App\Controllers\Registration;
 
 use App\Controllers\Controller;
 use App\Facades\Components\View;
@@ -13,11 +13,19 @@ use App\Models\Role;
 
 class RegistrationController extends Controller {
 
-    protected function showRegistration() {
+    /**
+     * Shows the registration page.
+     * 
+     */
+    protected function show() {
         View::show('pages/register');
     }
 
-    protected function doRegistration() {
+    /**
+     * Registers a new user.
+     * 
+     */
+    protected function register() {
         $defaultRole = Role::where('role', '=', 'Default')->first();
 
         // check if a user already exists with the same email
@@ -26,7 +34,7 @@ class RegistrationController extends Controller {
             Session::flash('alert', [
                 'type' => 'warning',
                 'title' => 'Email Account Exists',
-                'text' => 'An account with the email "' . Input::post('email') . '" already exists. Please login or register with a new email.'
+                'text' => 'An account with the email ' . Input::post('email') . ' already exists. Please login or register with a new email.'
             ]);
 
             Redirect::route('registration-page');
@@ -39,13 +47,13 @@ class RegistrationController extends Controller {
         $user->password = Crypto::hash(Input::post('password'));
         $user->save();
 
-        // assign the new user to the "default" group
+        // assign user the "default" role
         $user->roles()->save($defaultRole);
 
         Session::flash('alert', [
             'type' => 'success',
             'title' => 'Account Created',
-            'text' => 'Your account has been successfully created. Please login below.'
+            'text' => 'Your account has been successfully created. Please login.'
         ]);
 
         Redirect::route('login-page');

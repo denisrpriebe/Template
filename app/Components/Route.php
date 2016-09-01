@@ -40,7 +40,8 @@ class Route {
      */
     public function load($route) {
         $controllerParts = explode('@', $this->routes[$route]['controller']);
-        return new $controllerParts[0]($this->routes[$route], $controllerParts[1]);
+        $controller = 'App\\Controllers\\' . $controllerParts[0];
+        return new $controller($this->routes[$route], $controllerParts[1]);
     }
 
     /**

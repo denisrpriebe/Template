@@ -34,7 +34,7 @@
 
 <[block name="page-content"]>
 
-    <[include file="../layout/partials/alerts.tpl"]>
+    <[include file="../layout/partials/sweet-alerts.tpl"]>
     
     <div class="centered-container animsition">
 

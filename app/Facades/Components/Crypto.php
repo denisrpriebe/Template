@@ -2,14 +2,10 @@
 
 namespace App\Facades\Components;
 
-class Crypto {
+use App\Facades\Facade;
 
-    public static function hash($value) {
-        return $GLOBALS['_encryption']->hash($value);
-    }
-    
-    public static function passwordResetToken() {
-        return $GLOBALS['_encryption']->passwordResetToken();
-    }
+class Crypto extends Facade {
+
+    protected static $instanceName = 'encryption';
 
 }

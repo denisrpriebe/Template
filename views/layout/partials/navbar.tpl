@@ -70,28 +70,61 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
+
                 <[assign var="nav" value=Nav::nav()]>
+
                 <[if isset($nav)]>
                     <[foreach from=$nav key=key item=settings]>
-                        <[if isset($settings['children'])]>
-                            <li class="dropdown <[if in_array($key, Nav::getActiveTabs())]>active<[/if]>">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><[$settings['icon']]> <[$settings['text']]>
-                                    <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <[foreach from=$settings['children'] key=childKey item=childSettings]>
-                                        <li class="<[if in_array($childKey, Nav::getActiveTabs())]>active<[/if]>">
-                                            <a href="<[Route::to($childSettings['route-name'])]>"><[$childSettings['icon']]> <[$childSettings['text']]></a>
+                        <[if isset($settings['allowed'])]>
+
+                            <[foreach from=$settings['allowed'] item=role]>
+                                <[if Auth::user()->hasRole($role)]>
+
+                                    <[if isset($settings['children'])]>
+                                        <li class="dropdown <[if in_array($key, Nav::getActiveTabs())]>active<[/if]>">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><[$settings['icon']]> <[$settings['text']]>
+                                                <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <[foreach from=$settings['children'] key=childKey item=childSettings]>
+                                                    <li class="<[if in_array($childKey, Nav::getActiveTabs())]>active<[/if]>">
+                                                        <a href="<[Route::to($childSettings['route-name'])]>"><[$childSettings['icon']]> <[$childSettings['text']]></a>
+                                                    </li>
+                                                <[/foreach]>
+                                            </ul>
+                                        </li>                            
+                                    <[else]>
+                                        <li class="<[if in_array($key, Nav::getActiveTabs())]>active<[/if]>">
+                                            <a class="animsition-link" href="<[Route::to($settings['route-name'])]>"><[$settings['icon']]> <[$settings['text']]></a>
                                         </li>
-                                    <[/foreach]>
-                                </ul>
-                            </li>
+                                    <[/if]>
+
+                                <[/if]>
+                            <[/foreach]>
+
                         <[else]>
-                            <li class="<[if in_array($key, Nav::getActiveTabs())]>active<[/if]>">
-                                <a class="animsition-link" href="<[Route::to($settings['route-name'])]>"><[$settings['icon']]> <[$settings['text']]></a>
-                            </li>
+
+                            <[if isset($settings['children'])]>
+                                <li class="dropdown <[if in_array($key, Nav::getActiveTabs())]>active<[/if]>">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><[$settings['icon']]> <[$settings['text']]>
+                                        <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <[foreach from=$settings['children'] key=childKey item=childSettings]>
+                                            <li class="<[if in_array($childKey, Nav::getActiveTabs())]>active<[/if]>">
+                                                <a href="<[Route::to($childSettings['route-name'])]>"><[$childSettings['icon']]> <[$childSettings['text']]></a>
+                                            </li>
+                                        <[/foreach]>
+                                    </ul>
+                                </li>                            
+                            <[else]>
+                                <li class="<[if in_array($key, Nav::getActiveTabs())]>active<[/if]>">
+                                    <a class="animsition-link" href="<[Route::to($settings['route-name'])]>"><[$settings['icon']]> <[$settings['text']]></a>
+                                </li>
+                            <[/if]>
+
                         <[/if]>
                     <[/foreach]>
                 <[/if]>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -147,7 +180,7 @@
                     </div>
 
                 </div>
-                <div class="modal-footer modal-footer-padding" style="padding: 0px 0px 30px 0px;">
+                <div class="modal-footer">
                     <button id="updateUserSettingsBtn" type="submit" class="btn btn-primary">
                         <span class="glyphicon glyphicon-refresh"></span> Update
                     </button>

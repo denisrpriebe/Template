@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8a2ef2cf493a2140701837fdc6d4d42b",
-    "content-hash": "d6da8942162e904a551dd0920e554bad",
+    "hash": "21c3bab0250be1b959288514728f3f7c",
+    "content-hash": "a0a3f7ef07b1cb2aed9c7d76f3442b97",
     "packages": [
         {
             "name": "illuminate/container",
@@ -305,24 +305,25 @@
         },
         {
             "name": "respect/validation",
-            "version": "0.9.8",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "7d978d64e33e522b060ef82d1d41c39e60f28959"
+                "reference": "53b737513b0c4a1253762dd3d1b55e11f09d14a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/7d978d64e33e522b060ef82d1d41c39e60f28959",
-                "reference": "7d978d64e33e522b060ef82d1d41c39e60f28959",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/53b737513b0c4a1253762dd3d1b55e11f09d14a9",
+                "reference": "53b737513b0c4a1253762dd3d1b55e11f09d14a9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.4"
             },
             "require-dev": {
                 "egulias/email-validator": "~1.2",
                 "malkusch/bav": "~1.0",
+                "mikey179/vfsstream": "^1.5",
                 "phpunit/phpunit": "~4.0",
                 "symfony/validator": "~2.6.9",
                 "zendframework/zend-validator": "~2.3"
@@ -331,6 +332,7 @@
                 "egulias/email-validator": "Strict (RFC compliant) email validation",
                 "ext-bcmath": "Arbitrary Precision Mathematics",
                 "ext-mbstring": "Multibyte String Functions",
+                "fabpot/php-cs-fixer": "Fix PSR2 and other coding style issues",
                 "malkusch/bav": "German bank account validation",
                 "symfony/validator": "Use Symfony validator through Respect\\Validation",
                 "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation"
@@ -338,7 +340,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -357,13 +359,13 @@
                 }
             ],
             "description": "The most awesome validation engine ever created for PHP",
-            "homepage": "http://respect.li",
+            "homepage": "http://respect.github.io/Validation/",
             "keywords": [
                 "respect",
                 "validation",
                 "validator"
             ],
-            "time": "2016-03-31 17:26:10"
+            "time": "2016-08-03 09:06:53"
         },
         {
             "name": "smarty/smarty",

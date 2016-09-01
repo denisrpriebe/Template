@@ -2,18 +2,10 @@
 
 namespace App\Facades\Components;
 
-class Nav {
+use App\Facades\Facade;
 
-    public static function nav() {
-        return $GLOBALS['_navigation']->nav();
-    }
+class Nav extends Facade {
 
-    public static function setActiveTabs(array $names) {
-        return $GLOBALS['_navigation']->setActiveTabs($names);
-    }
-    
-    public static function getActiveTabs() {
-        return $GLOBALS['_navigation']->getActiveTabs();
-    }
+    protected static $instanceName = 'navigation';
 
 }

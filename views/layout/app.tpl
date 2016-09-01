@@ -7,23 +7,23 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
         <[include file="./include/styles.tpl"]>
+        
         <[include file="./include/scripts.tpl"]>
+        <[block name="page-script"]><[/block]>
 
         <link rel="shortcut icon" href="<[View::asset('images/icon.png')]>" type="image/png">
         <link rel="icon" href="<[View::asset('images/icon.png')]>" type="image/png">
 
         <title><[block name="page-title"]><[/block]></title>
 
-        <[block name="page-script"]><[/block]>
-
     </head>
-    <body>
+    <body id="bs-override">
 
         <div class="loading">
             <img src="<[View::asset('images/loading.gif')]>" >
         </div>
 
         <[block name="page-content"]><[/block]>
-    
+
     </body>
 </html>

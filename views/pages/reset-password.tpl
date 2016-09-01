@@ -12,7 +12,7 @@
              *
              */
             $('#resetPasswordForm').formValidation({
-                framework: 'bootstrap',                
+                framework: 'bootstrap',
                 fields: {
                     password: {
                         validators: {
@@ -37,7 +37,7 @@
                         }
                     }
                 }
-            }).on('success.form.fv', function(e) {
+            }).on('success.form.fv', function (e) {
                 $('#sendEmailBtn').addClass('m-progress');
             });
 
@@ -51,7 +51,7 @@
 
     <div class="centered-container animsition">
 
-        <[include file="../layout/partials/alerts.tpl"]>
+        <[include file="../layout/partials/sweet-alerts.tpl"]>
 
         <div class="login-box panel panel-default panel-transparent">
             <div class="panel-heading">
@@ -59,7 +59,7 @@
             </div>
             <div class="panel-body">
 
-                <form role="form" method="post" action="<[Route::to('do-reset-password')]>" id="resetPasswordForm">
+                <form role="form" method="post" action="<[Route::to('reset-password')]>" id="resetPasswordForm">
 
                     <input type="hidden" name="password_reset_token" value="<[$passwordResetToken]>">
 

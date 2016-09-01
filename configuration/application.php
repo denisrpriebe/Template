@@ -5,7 +5,7 @@
  * 
  * Application settings may be configured here.
  */
-return array (
+return [
     
     /**
      * The application may be configured to be in development or production
@@ -26,4 +26,4 @@ return array (
      */
     'company' => 'Company Name'
     
-);
+];

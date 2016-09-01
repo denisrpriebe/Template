@@ -19,7 +19,17 @@
 
         <div class="container clear-nav">
 
-            <[include file="../layout/partials/alerts.tpl"]>
+            <[include file="../layout/partials/sweet-alerts.tpl"]>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Library</a></li>
+                        <li class="active">Data</li>
+                    </ol>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-md-12">

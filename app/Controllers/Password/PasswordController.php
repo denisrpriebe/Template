@@ -20,7 +20,7 @@ class PasswordController extends Controller {
      * Shows the forgot password page.
      * 
      */
-    protected function showForgotPassword() {
+    protected function show() {
         View::show('pages/forgot-password');
     }
 
@@ -95,7 +95,7 @@ class PasswordController extends Controller {
             Session::flash('alert', [
                 'type' => 'danger',
                 'title' => 'Unknown Email',
-                'text' => 'The email "' . Input::post('email') . '" is not in our system. Please try a different email or register for a new account.'
+                'text' => 'The email ' . Input::post('email') . ' is not in our system. Please try a different email or register for a new account.'
             ]);
 
             Redirect::route('forgot-password-page');

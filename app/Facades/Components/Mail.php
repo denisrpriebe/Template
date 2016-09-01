@@ -2,10 +2,10 @@
 
 namespace App\Facades\Components;
 
-class Mail {
+use App\Facades\Facade;
+
+class Mail extends Facade {
     
-    public static function send(array $email) {
-        return $GLOBALS['_mail']->sendEmail($email);
-    }
+    protected static $instanceName = 'mail';
     
 }

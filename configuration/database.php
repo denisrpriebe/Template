@@ -5,7 +5,7 @@
  * 
  * Database credentials and connection settings are configured here.
  */
-return array(
+return [
     
     /**
      * The server to connect to.
@@ -30,4 +30,5 @@ return array(
      * 
      */
     'dbname' => 'template'
-);
+    
+];

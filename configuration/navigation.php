@@ -6,42 +6,49 @@
  * Navigation can be configured here. Each link/tab needs to have a text, icon
  * and route-name.
  */
-return array(
+return [
 
-    'nav' => array(
+    'nav' => [
 
-        'dashboard' => array(
+        'dashboard' => [
             'text' => 'Dashboard',
             'icon' => '<span class="glyphicon glyphicon-dashboard"></span>',
-            'route-name' => 'auth-dashboard-page'
-        ),
+            'route-name' => 'dashboard-page'
+        ],
 
-        'apps' => array(
+        'apps' => [
             'text' => 'Apps',
             'icon' => '<span class="glyphicon glyphicon-th-large"></span>',
             'route-name' => '#',
-            'children' => array(
+            'children' => [
 
-                'word' => array(
+                'word' => [
                     'text' => 'Word',
                     'icon' => '<span class="glyphicon glyphicon-search"></span>',
-                    'route-name' => 'auth-dashboard-page'
-                ),
+                    'route-name' => 'dashboard-page'
+                ],
 
-                'excel' => array(
+                'excel' => [
                     'text' => 'Excel',
                     'icon' => '<span class="glyphicon glyphicon-print"></span>',
-                    'route-name' => 'auth-dashboard-page'
-                )
+                    'route-name' => 'dashboard-page'
+                ]
 
-            )
-        ),
+            ]
+        ],
 
-        'inventory' => array(
+        'inventory' => [
             'text' => 'Inventory',
             'icon' => '<span class="glyphicon glyphicon-inbox"></span>',
-            'route-name' => 'auth-inventory-page'
-        ),
+            'route-name' => 'inventory-page'
+        ],
+        
+        'users' => [
+            'text' => 'Users',
+            'icon' => '<span class="glyphicon glyphicon-user"></span>',
+            'route-name' => 'users-page',
+            'allowed' => ['Administrator']
+        ],
 
-    )
-);
+    ]
+];

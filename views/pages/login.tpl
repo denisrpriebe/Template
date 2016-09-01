@@ -27,11 +27,6 @@
                         validators: {
                             notEmpty: {
                                 message: 'Please enter your password.'
-                            },
-                            stringLength: {
-                                min: 5,
-                                max: 30,
-                                message: 'Your password must be more than 5 characters.'
                             }
                         }
                     }
@@ -46,7 +41,7 @@
 
 <[block name="page-content"]>
 
-    <[include file="../layout/partials/alerts.tpl"]>
+    <[include file="../layout/partials/sweet-alerts.tpl"]>
 
     <div class="login-container animsition">
 
@@ -72,7 +67,7 @@
 
                     <h3 class="text-center">Hello <[Auth::user()->first_name]>.</h3>
 
-                    <a role="button" class="btn btn-primary btn-block login-btn-home loading-button" href="<[Route::to('auth-dashboard-page')]>">
+                    <a role="button" class="btn btn-primary btn-block login-btn-home loading-button" href="<[Route::to('dashboard-page')]>">
                         <span class="glyphicon glyphicon-dashboard"></span> Dashboard
                     </a>
 
@@ -82,11 +77,11 @@
 
                 <[else]>
 
-                    <form role="form" method="post" action="<[Route::to('do-login')]>" id="loginForm">
+                    <form role="form" method="post" action="<[Route::to('login')]>" id="loginForm">
 
                         <div class="form-group label-floating">
                             <label class="control-label">Email:</label>
-                            <input type="email" name="email" class="form-control" required>
+                            <input type="text" name="email" class="form-control" required>
                         </div>
 
                         <div class="form-group label-floating">

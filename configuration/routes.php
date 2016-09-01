@@ -2,112 +2,137 @@
 
 /**
  * Application Routes
- * 
+ *
  * Application routes may be configured here. Each route needs at least a
- * method, controller and name. A guard may also be added to routes that
+ * method, controller and name. An 'allowed' may also be added to routes that
  * require the user to be authenticated.
  */
 return [
-    
+
     /**
      * Seeds the database.
-     * 
+     *
      */
-    '/seed-db' => [
+    '/db/seed' => [
         'method' => 'get',
-        'controller' => 'App\Controllers\Database\DatabaseController@seed',
+        'controller' => 'Database\DatabaseController@seed',
         'name' => 'seed-db'
     ],
-    
+
     /**
-     * Login Page
-     * 
+     * Logging In
+     *
      */
     '/login' => [
         'method' => 'get',
-        'controller' => 'App\Controllers\Login\LoginController@showLogin',
+        'controller' => 'Login\LoginController@show',
         'name' => 'login-page'
     ],
-    
-    /**
-     * Do Login
-     * 
-     */
-    '/do-login' => [
+
+    '/login/do' => [
         'method' => 'post',
-        'controller' => 'App\Controllers\Login\LoginController@doLogin',
-        'name' => 'do-login'
+        'controller' => 'Login\LoginController@login',
+        'name' => 'login'
     ],
-    
+
     /**
-     * Do Logout
-     * 
+     * Logging Out
+     *
      */
     '/logout' => [
         'method' => 'get',
-        'controller' => 'App\Controllers\Logout\LogoutController@logout',
+        'controller' => 'Logout\LogoutController@logout',
         'name' => 'logout-page'
     ],
-    
-    
-    
+
+
+    /**
+     * Registration
+     *
+     */
     '/register' => [
         'method' => 'get',
-        'controller' => 'App\Controllers\Register\RegistrationController@showRegistration',
+        'controller' => 'Registration\RegistrationController@show',
         'name' => 'registration-page'
     ],
-    
-    '/do-registration' => [
+
+    '/register/do' => [
         'method' => 'post',
-        'controller' => 'App\Controllers\Register\RegistrationController@doRegistration',
-        'name' => 'do-registration'
+        'controller' => 'Registration\RegistrationController@register',
+        'name' => 'register'
     ],
-    
-    
-    
-    '/forgot-password' => [
+
+    /**
+     * Password Management
+     *
+     */
+    '/password/forgot' => [
         'method' => 'get',
-        'controller' => 'App\Controllers\Password\PasswordController@showForgotPassword',
+        'controller' => 'Password\PasswordController@show',
         'name' => 'forgot-password-page'
     ],
     
-    '/reset-password' => [
+    '/password/reset' => [
         'method' => 'get',
-        'controller' => 'App\Controllers\Password\PasswordController@showResetPassword',
+        'controller' => 'Password\PasswordController@showResetPassword',
         'name' => 'reset-password-page'
     ],
-    
-    '/do-reset-password' => [
+
+    '/password/reset/do' => [
         'method' => 'post',
-        'controller' => 'App\Controllers\Password\PasswordController@doResetPassword',
-        'name' => 'do-reset-password'
+        'controller' => 'Password\PasswordController@doResetPassword',
+        'name' => 'reset-password'
     ],
-    
-    '/send-forgot-password-email' => [
+
+    '/password/email' => [
         'method' => 'post',
-        'controller' => 'App\Controllers\Password\PasswordController@sendForgotPasswordEmail',
+        'controller' => 'Password\PasswordController@sendForgotPasswordEmail',
         'name' => 'send-forgot-password-email'
     ],
 
-    '/auth/dashboard' => [
-        'method' => 'get',
-        'controller' => 'App\Controllers\Auth\DashboardController@showDashboard',
-        'guard' => 'guard',
-        'name' => 'auth-dashboard-page'
-    ],
-
+    /**
+     * Navbar
+     * 
+     */
     '/auth/update-user-settings' => [
         'method' => 'post',
-        'controller' => 'App\Controllers\User\UserController@updateSettings',
-        'guard' => 'guard',
+        'controller' => 'User\UserController@updateSettings',
+        'allowed' => ['Administrator', 'Default'],
         'name' => 'update-user-settings'
     ],
     
+    /**
+     * Dashboard
+     * 
+     */
+    '/auth/dashboard' => [
+        'method' => 'get',
+        'controller' => 'Auth\DashboardController@show',
+        'allowed' => ['Administrator', 'Default'],
+        'name' => 'dashboard-page'
+    ],
+
+    /**
+     * Inventory
+     * 
+     */
     '/auth/inventory' => [
         'method' => 'get',
-        'controller' => 'App\Controllers\Inventory\InventoryController@showInventory',
-        'guard' => 'guard',
-        'name' => 'auth-inventory-page'
-    ]
+        'controller' => 'Inventory\InventoryController@show',
+        'allowed' => ['Administrator', 'Default'],
+        'name' => 'inventory-page'
+    ],
     
+    /**
+     * Users
+     * 
+     */
+    '/auth/users' => [
+        'method' => 'get',
+        'controller' => 'User\UserController@showUsers',
+        'guard' => 'guard',
+        'allowed' => ['Administrator'],
+        'name' => 'users-page'
+    ]
+
 ];

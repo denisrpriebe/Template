@@ -16,8 +16,8 @@ use App\Components\Redirect as RedirectComponent;
 use App\Components\View as ViewComponent;
 use App\Components\Navigation as NavigationComponent;
 use App\Components\Route as RouteComponent;
-
-use App\Bootstrap\GlobalView;
+use App\Components\Validator as ValidatorComponent;
+use App\Components\Flash as FlashComponent;
 
 use App\Models\User;
 
@@ -38,6 +38,7 @@ $configuration = new ConfigurationComponent(array(
 ));
 
 $input = new InputComponent();
+$validator = new ValidatorComponent();
 $database = new DatabaseComponent($configuration);
 $encryption = new EncryptionComponent($configuration);
 $mail = new MailComponent($configuration);
@@ -45,6 +46,7 @@ $navigation = new NavigationComponent($configuration);
 $view = new ViewComponent($configuration);
 $route = new RouteComponent($configuration);
 $session = new SessionComponent($configuration, $input);
+$flash = new FlashComponent($session);
 $redirect = new RedirectComponent($configuration, $session, $route);
 $authentication = new AuthenticationComponent($configuration, $session, $input, $redirect, new User);
 
@@ -55,17 +57,18 @@ $view->integrate('Nav', 'App\Facades\Components\Nav');
 $view->integrate('Auth', 'App\Facades\Components\Auth');
 $view->integrate('Route', 'App\Facades\Components\Route');
 
-$application->addComponent($configuration, '_configuration');
-$application->addComponent($database, '_database');
-$application->addComponent($input, '_input');
-$application->addComponent($session, '_session');
-$application->addComponent($encryption, '_encryption');
-$application->addComponent($mail, '_mail');
-$application->addComponent($authentication, '_authentication');
-$application->addComponent($redirect, '_redirect');
-$application->addComponent($navigation, '_navigation');
-$application->addComponent($view, '_view');
-$application->addComponent($route, '_route');
+$application->addComponent($configuration, 'configuration');
+$application->addComponent($database, 'database');
+$application->addComponent($input, 'input');
+$application->addComponent($session, 'session');
+$application->addComponent($encryption, 'encryption');
+$application->addComponent($mail, 'mail');
+$application->addComponent($authentication, 'authentication');
+$application->addComponent($redirect, 'redirect');
+$application->addComponent($navigation, 'navigation');
+$application->addComponent($view, 'view');
+$application->addComponent($route, 'route');
+$application->addComponent($validator, 'validator');
+$application->addComponent($flash, 'flash');
 
-$globalView = new GlobalView;
-$globalView->bootData();
+$GLOBALS['app'] = $application;

@@ -7,12 +7,14 @@ use App\Facades\Components\View;
 use App\Facades\Components\Nav;
 
 class InventoryController extends Controller {
-    
-    public function showInventory() {
-        
+
+    /**
+     * Show the inventory page.
+     * 
+     */
+    public function show() {
         Nav::setActiveTabs(['inventory']);
-        
         View::show('pages/auth/inventory');
     }
-    
+
 }

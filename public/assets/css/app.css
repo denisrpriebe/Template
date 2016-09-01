@@ -1,70 +1,36 @@
-body {
-/*    background: url('../images/background-blue-5.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;*/
-background-color: #efefef;
+/*******************************************************************************
+ * Material Kit/Bootstrap Overrides
+ *******************************************************************************
+ * Any styles that need to override material kit's defaults may be added
+ * below.
+ ******************************************************************************/
+.panel-heading-btn {
+    margin: 0px;
+}
+.form-submit-btn {
+    margin: 24px 0px 0px 0px;
+}
+#bs-override .modal-footer {
+    text-align: center;
+    padding: 0px 0px 30px 0px;
+}
+#bs-override .v-align td {
+    vertical-align: middle;
 }
 
+/*******************************************************************************
+ * Global Styles
+ *******************************************************************************
+ *
+ ******************************************************************************/
 .loading {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
+    opacity: .5;
 }
-
-/*
- |--------------------------------------------------------------------------
- | Bootstrap Overrides
- |--------------------------------------------------------------------------
- |
- | Override any default bootstrap styles here.
- |
-*/
-.panel {
-    background-color: rgba(255, 255, 255, .65);
-}
-.navbar {
-    -webkit-box-shadow: 0 6px 15px -4px rgba(0,0,0,.375);
-    -moz-box-shadow: 0 6px 15px -4px rgba(0,0,0,.375);
-    box-shadow: 0 6px 15px -4px rgba(0,0,0,.375);
-
-}
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    padding: 0px 22px 0px 0px;
-}
-.navbar-brand > img {
-    padding: 7px 10px;
-    width: 50px;
-}
-.navbar-brand {
-    padding-left: 8px;
-}
-.alert, .jumbotron, .panel {
-    -webkit-box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
-    -moz-box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
-    box-shadow: 3px 3px 20px -5px rgba(64,64,64,0.75);
-}
-.modal-footer {
-    text-align: center;
-}
-.jumbotron {
-    background-color: rgba(238, 238, 238, .65);
-}
-
-/*
- |--------------------------------------------------------------------------
- | Un-Authenticated Pages
- |--------------------------------------------------------------------------
- |
- | Any styles that need to be applied before a user is logged in can be
- | added here.
- |
-*/
 .login-container {
     width: 300px;
     height: 320px;
@@ -73,7 +39,6 @@ background-color: #efefef;
     left: 50%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
-
 }
 .login-panel-body {
     padding: 15px 15px 4px 15px;
@@ -90,18 +55,8 @@ background-color: #efefef;
     font-size: x-small;
 }
 .forgot-password {
-    padding: 5px 0px 5px 0px;
+    margin: 0px;
 }
-
-/*
- |--------------------------------------------------------------------------
- | Authenticated Pages
- |--------------------------------------------------------------------------
- |
- | Any styles that need to be applied after a user is logged in can be
- | added here.
- |
-*/
 .login-btn-home {
     margin: 30px 0px 15px 0px;
 }
@@ -109,7 +64,7 @@ background-color: #efefef;
     display: none;
 }
 .clear-nav {
-    margin-top: 70px;
+    margin-top: 90px;
 }
 .logout-btn {
     margin-bottom: 15px;

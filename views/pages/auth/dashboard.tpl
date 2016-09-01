@@ -20,14 +20,14 @@
 
         <div class="container clear-nav">
 
-            <[include file="../layout/partials/alerts.tpl"]>
+            <[include file="../layout/partials/sweet-alerts.tpl"]>
 
             <div class="row">
                 <div class="col-md-12">
                     <div class="jumbotron">
                         <h1>Application Dashboard</h1>
                         <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
-                        <p>This is a global view variable: <[$globalVar]></p>
+                        <p>This is a global view variable: </p>
                     </div>
                 </div>
             </div>

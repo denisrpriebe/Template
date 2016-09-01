@@ -60,7 +60,7 @@
 
 <[block name="page-content"]>
 
-    <[include file="../layout/partials/alerts.tpl"]>
+    <[include file="../layout/partials/sweet-alerts.tpl"]>
     
     <div class="centered-container animsition">
 
@@ -75,7 +75,7 @@
             </div>
             <div class="panel-body">
 
-                <form role="form" method="post" action="<[Route::to('do-registration')]>" id="registrationForm">
+                <form role="form" method="post" action="<[Route::to('register')]>" id="registrationForm">
 
                     <div class="form-group label-floating">
                         <label class="control-label">Email:</label>

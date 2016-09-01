@@ -2,22 +2,33 @@
 
 namespace App\Core;
 
-use App\Models\Model;
-use App\Components\Configuration;
-
 class Application {
 
+    /**
+     * The application components.
+     *
+     * @var array
+     */
+    protected $components = [];
+
+    /**
+     * Adds a new component to the application.
+     *
+     * @param mixed $component
+     * @param string $name
+     */
     public function addComponent($component, $name) {
-        $GLOBALS[$name] = $component;
+        $this->components[$name] = $component;
     }
 
-    public function addModel(Model $model, $name) {
-        $GLOBALS[$name] = $model;
+    /**
+     * Returns the specified component.
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function getComponent($name) {
+        return $this->components[$name];
     }
 
-    public function load($page, Configuration $configuration) {
-        $route = $configuration->routes($page);
-        dd($route);
-    }
-    
 }

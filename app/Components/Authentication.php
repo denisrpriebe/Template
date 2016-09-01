@@ -145,6 +145,15 @@ class Authentication {
         }
     }
 
+    public function userIsAuthorized(array $route) {
+        foreach ($route['allowed'] as $allowedRole) {
+            if ($this->user()->hasRole($allowedRole)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Allows only POST requests to access a page.
      * 

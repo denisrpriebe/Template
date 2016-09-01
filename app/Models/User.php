@@ -17,7 +17,7 @@ class User extends Model {
      * @var type 
      */
     protected $fillable = array(
-        'email', 'first_name', 'last_name', 'password', 'password_reset_token', 'password_reset_expires'
+        'email', 'first_name', 'last_name', 'password'
     );
 
     /**
